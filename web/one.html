@@ -7,7 +7,14 @@
 		<script type="text/javascript">
 			
 			$(document).ready(function(){
-				alert(1);
+				
+				$.ajax({
+					dataType 	: 	'json',
+					type		:	'GET',
+					url			:	'doodoo.json',
+					success		:	function(json) {alert(json.length);}
+				});
+
 			});
 
 		</script>

@@ -30,7 +30,7 @@
 	-webkit-border-radius: 5px;
 	text-align: center;
 	background-color: limegreen;
-	top: 355;
+	top: 205;
 	left: 300;
 }
 
@@ -56,7 +56,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 370;
+	top: 220;
 	left: 300;
 }
 #right {
@@ -69,7 +69,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 400;
+	top: 250;
 	left: 680;
 }
 #libero {
@@ -82,7 +82,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 700;
 }
 #outside1 {
@@ -95,7 +95,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 240;
 }
 #outside2 {
@@ -108,7 +108,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 470;
 }
 
@@ -161,6 +161,6 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 600;
+	top: 450;
 	left: 470;
 }

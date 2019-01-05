@@ -25,10 +25,10 @@ DEMO.run = function() {
 		//points.push([Math.floor(Math.random()*(maxX-minX))+minX, Math.floor(Math.random()*(maxY-minY))+minY]);
 	}
 
-	points.push([300,355]);
-	points.push([470,410]);
-	points2.push([720,500]);
-	points2.push([700,375]);
+	points.push([300,205]);
+	points.push([470,260]);
+	points2.push([720,350]);
+	points2.push([700,225]);
 
 	// -- Important bit #1: Generate the spline animation object --
 	var spline = $.crSpline.buildSequence(points);

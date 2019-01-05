@@ -29,7 +29,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 400;
+	top: 250;
 	left: 680;
 }
 #setter {
@@ -42,7 +42,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 380;
+	top: 230;
 	left: 470;
 }
 
@@ -56,7 +56,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 490;
+	top: 340;
 	left: 470;
 }
 #libero {
@@ -69,7 +69,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 240;
 }
 #outside1 {
@@ -82,7 +82,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 400;
+	top: 250;
 	left: 280;
 }
 #outside2 {
@@ -95,7 +95,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 700;
 }
 

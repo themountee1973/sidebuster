@@ -24,8 +24,8 @@ DEMO.run = function() {
 		//points.push([Math.floor(Math.random()*(maxX-minX))+minX, Math.floor(Math.random()*(maxY-minY))+minY]);
 	}
 
-	points2.push([300,355]);
-	points2.push([670,375]);
+	points2.push([300,205]);
+	points2.push([670,225]);
 
 	// -- Important bit #1: Generate the spline animation object --
 	var spline2 = $.crSpline.buildSequence(points2);

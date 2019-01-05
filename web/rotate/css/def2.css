@@ -30,7 +30,7 @@
 	-webkit-border-radius: 5px;
 	text-align: center;
 	background-color: limegreen;
-	top: 355;
+	top: 205;
 	left: 300;
 }
 #outside2 {
@@ -44,7 +44,7 @@
 	-webkit-border-radius: 5px;
 	text-align: center;
 	background-color: limegreen;
-	top: 410;
+	top: 260;
 	left: 440;
 }
 
@@ -82,7 +82,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 240;
 }
 #libero {
@@ -95,7 +95,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 470;
+	top: 320;
 	left: 700;
 }
 #outside1 {
@@ -108,7 +108,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 490;
+	top: 340;
 	left: 470;
 }
 #setter {
@@ -121,7 +121,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 375;
+	top: 225;
 	left: 680;
 }
 

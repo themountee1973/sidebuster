@@ -28,7 +28,7 @@ DEMO.run = function() {
 	points.push([300,205]);
 	points.push([470,260]);
 	points2.push([720,350]);
-	points2.push([700,225]);
+	points2.push([660,225]);
 
 	// -- Important bit #1: Generate the spline animation object --
 	var spline = $.crSpline.buildSequence(points);

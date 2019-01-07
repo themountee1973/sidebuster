@@ -1,24 +1,3 @@
-.waypoint {
-	position: absolute;
-	z-index: 4;
-	width: 20px;
-	height: 20px;
-	text-align: center;
-	background-color: #7f9f7f;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-.path-dot {
-	position: absolute;
-	z-index: 1;
-	width: 4px;
-	height: 4px;
-	font: 0px;
-	background-color: #dca3a3;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
 #middle {
 	position: absolute;
 	z-index: 5;
@@ -44,7 +23,7 @@
 	-webkit-border-radius: 5px;
 	text-align: center;
 	background-color: limegreen;
-	top: 205;
+	top: 215;
 	left: 450;
 }
 #mover {
@@ -83,7 +62,7 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-align: center;
-	top: 220;
+	top: 230;
 	left: 520;
 }
 #libero {

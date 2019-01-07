@@ -25,7 +25,7 @@ DEMO.run = function() {
 		//points.push([Math.floor(Math.random()*(maxX-minX))+minX, Math.floor(Math.random()*(maxY-minY))+minY]);
 	}
 
-	points.push([450,205]);
+	points.push([450,215]);
 	points.push([680,250]);
 	points2.push([680,250]);
 	points2.push([470,260]);

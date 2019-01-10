@@ -1,0 +1,127 @@
+td.player, th.player {
+	width: 150px;
+}
+td.stat-wide, th.stat-wide {
+	width: 150px;
+}
+td.stat, th.stat {
+	width: 60px;
+}
+td.stat-small, th.stat-small {
+	width: 50px;
+	text-align: center;
+}
+.wide-top {
+	border-bottom: 2px solid black;
+}
+.wide-left {
+	width: 74px;
+	position: relative;
+	float: left;
+	display: inline;
+	border-right: 1px solid black;
+}
+.wide-right {
+	width: 74px;
+	position: relative;
+	float: right;
+	display: inline;
+	border-left: 1px solid black;
+}
+input.dec {
+	width: 50%;
+	text-align:center;
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0px !important;
+	margin: 0px !important;
+	background-color: red;
+	border-radius: 5px !important;
+}
+input.inc {
+	width: 50%;
+	text-align:center;
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0px !important;
+	margin: 0px !important;
+	background-color: black;
+	color:white;
+	border-radius: 5px !important;
+}
+input.dec-split {
+	width: 25%;
+	text-align:center;
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0px !important;
+	margin: 0px !important;
+	background-color: red;
+	border-radius: 5px !important;
+}
+input.inc-split {
+	width: 25%;
+	text-align:center;
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0px !important;
+	margin: 0px !important;
+	background-color: black;
+	color:white;
+	border-radius: 5px !important;
+}
+input.stat {
+	width: 50%;
+	margin: 0 25%;
+	text-align: center;
+	border: 0 none;
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0 none;
+	margin: 0 none;
+}
+input.split {
+	width: 50%;
+	text-align: center;
+	/*border: 0 none;*/
+	position:relative;
+	display:inline;
+	float:left;
+	padding: 0 none;
+	margin: 0 none;
+}
+.att{
+	width: 32%;
+	display:inline;
+	position:relative;
+	float:left;
+	text-align: center;
+	font-weight: bold;
+	border-right: 1px solid black;
+}
+.made{
+	width: 32%;
+	display:inline;
+	position:relative;
+	float:left;
+	text-align: center;
+	font-weight: bold;
+	border-right: 1px solid black;
+}
+.pctge{
+	width: 34%;
+	display:inline;
+	position:relative;
+	float:left;
+	text-align: center;
+	font-weight: bold;
+}
+.center {
+	text-align: center;
+	font-weight: bold;
+}

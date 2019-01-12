@@ -5,7 +5,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'fieldgoalmake', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.fga').val(json.update.fga);
@@ -20,7 +20,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'fieldgoalmiss', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.fga').val(json.update.fga);
@@ -35,7 +35,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'threepointmake', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.tpa').val(json.update.tpa);
@@ -51,7 +51,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'threepointmiss', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.tpa').val(json.update.tpa);
@@ -66,7 +66,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'freethrowmake', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.fta').val(json.update.fta);
@@ -82,7 +82,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'freethrowmiss', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.fta').val(json.update.fta);
@@ -97,7 +97,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'offensiveboard', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.offrebound').val(json.update.offrebound);
@@ -112,7 +112,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'board', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.defrebound').val(json.update.defrebound);
@@ -127,7 +127,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'assist', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.assist').val(json.update.assist);
@@ -142,7 +142,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'block', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.block').val(json.update.block);
@@ -157,7 +157,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'steal', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.steal').val(json.update.steal);
@@ -172,7 +172,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'passDefended', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.tips').val(json.update.tips);
@@ -187,7 +187,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'charge', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.drawncharges').val(json.update.drawncharges);
@@ -202,7 +202,7 @@ function initButtons(){
 			dataType 	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxketball.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxketball.php',
 			data		:	{functionname: 'turnover', parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json){
 				$(that).parent().find('.turnovers').val(json.update.turnovers);
@@ -217,7 +217,7 @@ function initButtons(){
 			dataType	:	'json',
 			type		:	'POST',
 			async		:	false,
-			url			:	'http://localhost/sidebuster/ajaxremove.php',
+			url			:	'http://localhost/sidebuster/web/knights/ajaxremove.php',
 			data		:	{functionname: $(this).attr('alt'), parameter: $(this).parent().parent().attr('id')},
 			success		:	function(json) {
 				var callingAttribute = $(that).attr('alt');

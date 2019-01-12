@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html land="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Lady Knights</title>
+
+		<script src="js/jquery.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#statistics').dataTable({
+					bJQueryUI: true,
+					sPaginationType : 'full_numbers',
+					ajax: {
+						'url'			:	'json/stats.json',
+						'dataSrc'		:	''
+					},
+					columns		:	[
+						{'data':'id'},
+						{'data':'game'},
+						{'data':'player'},
+						{'data':'fga'},
+						{'data':'fgm'},
+						{'data':'tpa'},
+						{'data':'tpm'},
+						{'data':'fta'},
+						{'data':'ftm'},
+						{'data':'offrebound'},
+						{'data':'defrebound'},
+						{'data':'assist'},
+						{'data':'block'},
+						{'data':'steal'},
+						{'data':'tips'},
+						{'data':'drawncharges'},
+						{'data':'turnovers'},
+					]
+				});
+				
+
+			});
+		</script>
+	</head>
+	<body>
+
+		<table id="statistics" class="display" style="width:100%;">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Game</th>
+					<th>Player</th>
+					<th>FG Att</th>
+					<th>FG Made</th>
+					<th>3FG Att</th>
+					<th>3FG Made</th>
+					<th>FT Att</th>
+					<th>FT Made</th>
+					<th>Off Reb</th>
+					<th>Def Reb</th>
+					<th>Assists</th>
+					<th>Blocks</th>
+					<th>Steals</th>
+					<th>Passes<br/>Defended</th>
+					<th>Charges<br/>Taken</th>
+					<th>TOs</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+	</body>
+</html>

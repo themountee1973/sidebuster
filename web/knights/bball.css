@@ -1,3 +1,6 @@
+table {
+	border: 2px solid black;
+}
 td.player, th.player {
 	width: 150px;
 }
@@ -88,7 +91,7 @@ input.stat {
 input.split {
 	width: 50%;
 	text-align: center;
-	/*border: 0 none;*/
+	border: 0 none;
 	position:relative;
 	display:inline;
 	float:left;

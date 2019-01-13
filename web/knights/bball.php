@@ -5,7 +5,7 @@
 		<meta charset="utf-8"/>
 		<title>Score</title>
 		<link rel="stylesheet" href="bball.css"/>
-		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bball.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){

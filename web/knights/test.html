@@ -3,8 +3,15 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Lady Knights</title>
-
-		<script src="js/jquery.js"></script>
+		<link rel="stylesheet" href="jquery-datatables/datatables.css"/>
+		<link rel="stylesheet" href="jquery-theme/jquery-ui.css"/>
+		<style type="text/css">
+			.small { font-size: xx-small, text-align: right; }
+		</style>
+		<script src="/sidebuster/web/knights/js/jquery.js"></script>
+		<script src="jquery-datatables/datatables.js"></script>
+		<script src="jquery-datatables/dataTables.jqueryui.js"></script>
+		<script src="jquery-theme/jquery-ui.js"></script>
 		<script>
 			$(document).ready(function(){
 				$('#statistics').dataTable({
@@ -15,8 +22,8 @@
 						'dataSrc'		:	''
 					},
 					columns		:	[
-						{'data':'id'},
-						{'data':'game'},
+						{'data':'id','bVisible':false},
+						{'data':'game','bVisible':true},
 						{'data':'player'},
 						{'data':'fga'},
 						{'data':'fgm'},
@@ -44,23 +51,23 @@
 		<table id="statistics" class="display" style="width:100%;">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Game</th>
-					<th>Player</th>
-					<th>FG Att</th>
-					<th>FG Made</th>
-					<th>3FG Att</th>
-					<th>3FG Made</th>
-					<th>FT Att</th>
-					<th>FT Made</th>
-					<th>Off Reb</th>
-					<th>Def Reb</th>
-					<th>Assists</th>
-					<th>Blocks</th>
-					<th>Steals</th>
-					<th>Passes<br/>Defended</th>
-					<th>Charges<br/>Taken</th>
-					<th>TOs</th>
+					<th style="font-size: xx-small !important;">ID</th>
+					<th style="font-size: xx-small !important;">Game</th>
+					<th style="font-size: xx-small !important;">Player</th>
+					<th style="font-size: xx-small !important;">FG Att</th>
+					<th style="font-size: xx-small !important;">FG Made</th>
+					<th style="font-size: xx-small !important;">3FG Att</th>
+					<th style="font-size: xx-small !important;">3FG Made</th>
+					<th style="font-size: xx-small !important;">FT Att</th>
+					<th style="font-size: xx-small !important;">FT Made</th>
+					<th style="font-size: xx-small !important;">Off Reb</th>
+					<th style="font-size: xx-small !important;">Def Reb</th>
+					<th style="font-size: xx-small !important;">Assists</th>
+					<th style="font-size: xx-small !important;">Blocks</th>
+					<th style="font-size: xx-small !important;">Steals</th>
+					<th style="font-size: xx-small !important;">Passes<br/>Defended</th>
+					<th style="font-size: xx-small !important;">Charges<br/>Taken</th>
+					<th style="font-size: xx-small !important;">TOs</th>
 				</tr>
 			</thead>
 			<tbody>

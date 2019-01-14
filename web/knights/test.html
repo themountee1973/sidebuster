@@ -15,6 +15,35 @@
 		<script src="jquery-theme/jquery-ui.js"></script>
 		<script>
 
+			function updateScore(json) {
+				
+					var ht = json.home;
+					var vt = json.away;
+					var homeScore = json.homescore;
+					var awayScore = json.awayscore;
+					var v1 = json.awayq1;
+					var v2 = json.awayq2;
+					var v3 = json.awayq3;
+					var v4 = json.awayq4;
+					var h1 = json.homeq1;
+					var h2 = json.homeq2;
+					var h3 = json.homeq3;
+					var h4 = json.homeq4;
+					var dt = json.day;
+					$('#awayTeam').empty().append(vt);
+					$('#homeTeam').empty().append(ht);
+					$('#awayQ1').empty().append(v1);
+					$('#awayQ2').empty().append(v2);
+					$('#awayQ3').empty().append(v3);
+					$('#awayQ4').empty().append(v4);
+					$('#homeQ1').empty().append(h1);
+					$('#homeQ2').empty().append(h2);
+					$('#homeQ3').empty().append(h3);
+					$('#homeQ4').empty().append(h4);
+					$('#awayTtl').empty().append(awayScore);
+					$('#homeTtl').empty().append(homeScore);
+			}
+
 			$(document).ready(function(){
 				var selectGame = 'Select game:  ';
 
@@ -57,19 +86,28 @@
 							}
 							oTable.fnClearTable(true);
 							oTable.fnAddData(a, true);
-totals();
+							totals();
 						}
 					});
+
+					$.ajax({
+						dataType		:	'json',
+						type			:	'GET',
+						url				:	'json/games.json',
+						success			:	function(json){
+							for(var x = 0; x < json.length; x++) {
+								
+								if(json[x].id == gameId) {
+									updateScore(json[x]);
+								}
+							}
+						}
+					});
+
+
 				});
 
 				var oTable;
-/*			
-				oTable = $('#statistics').dataTable({
-					bJQueryUI: true,
-					sPaginationType : 'full_numbers',
-					iDisplayLength: -1
-				});
-*/
 
 				oTable = $('#statistics').dataTable({
 					bJQueryUI: true,
@@ -94,27 +132,6 @@ totals();
 						{'sClass':'aachg'},
 						{'sClass':'aatos'}
 					]
-/*
-					columns		:	[
-						{'data':'game'},
-						{'data':'player'},
-						{'data':'uniform'},
-						{'data':'fga','sClass':'aafga'},
-						{'data':'fgm','sClass':'aafgm'},
-						{'data':'tpa','sClass':'aatpa'},
-						{'data':'tpm','sClass':'aatpm'},
-						{'data':'fta','sClass':'aafta'},
-						{'data':'ftm','sClass':'aaftm'},
-						{'data':'offrebound'},
-						{'data':'defrebound'},
-						{'data':'assist'},
-						{'data':'block'},
-						{'data':'steal'},
-						{'data':'tips'},
-						{'data':'drawncharges'},
-						{'data':'turnovers'},
-					]
-*/					
 				});
 
 				var testtest = $('td').find('.aafga');
@@ -127,6 +144,38 @@ totals();
 	</head>
 	<body>
 		<div id="game"></div>
+		<div id="board">
+			<table border="1" style="width:50%;">
+				<thead>
+					<tr>
+						<th>Team</th>
+						<th>Q1</th>
+						<th>Q2</th>
+						<th>Q3</th>
+						<th>Q4</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div id="awayTeam">Visitor</div></td>
+						<td><div id="awayQ1">0</div></td>
+						<td><div id="awayQ2">0</div></td>
+						<td><div id="awayQ3">0</div></td>
+						<td><div id="awayQ4">0</div></td>
+						<td><div id="awayTtl">0</div></td>
+					</tr>
+					<tr>
+						<td><div id="homeTeam">Home</div></td>
+						<td><div id="homeQ1">0</div></td>
+						<td><div id="homeQ2">0</div></td>
+						<td><div id="homeQ3">0</div></td>
+						<td><div id="homeQ4">0</div></td>
+						<td><div id="homeTtl">0</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<table id="statistics" class="display" style="width:100%;">
 			<thead>
 				<tr>

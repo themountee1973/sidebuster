@@ -4,6 +4,10 @@
 			'tpa', 'tpm', 'fta', 'ftm', 'offrebound', 'defrebound', 
 			'assist', 'block', 'steal', 'tips', 'drawncharges', 'turnovers'];
 
+		var gameElements = ['id', 'home', 'away', 'day', 'date', 
+			'homeq1', 'homeq2', 'homeq3', 'homeq4', 'awayq1', 'awayq2',
+			'awayq3','awayq4','homescore','awayscore'];
+
 		function totals() {
 			var fgaTtl = 0;
 			var fgmTtl = 0;

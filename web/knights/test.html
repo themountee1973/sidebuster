@@ -8,25 +8,97 @@
 		<style type="text/css">
 			.small { font-size: xx-small, text-align: right; }
 		</style>
+		<script src="js/bball.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="jquery-datatables/datatables.js"></script>
 		<script src="jquery-datatables/dataTables.jqueryui.js"></script>
 		<script src="jquery-theme/jquery-ui.js"></script>
 		<script>
+
 			$(document).ready(function(){
-								$('#fgattl').empty().append(123);
-				$('#statistics').dataTable({
+				var selectGame = 'Select game:  ';
+
+				$.ajax({
+					dataType		:	'json',
+					type			:	'GET',
+					url				:	'json/games.json',
+					success			:	function(json){
+										selectGame += '<select name="game" id="game">';
+										selectGame += '<option value=""></option>';
+										for(var a = 0; a < json.length; a++) {
+											selectGame += '<option value="' + json[a].id + '">' + json[a].away + ' @ ' + json[a].home + '</option>';											
+										}
+										selectGame += '</select>';
+										$('#game').empty().append(selectGame);
+					}
+				});
+
+				$('#game').change(function(){
+					var gameId = $(this).find('option:selected').val();
+					
+					if(gameId == '') {
+						gameId = 'all';
+					}
+
+					$.ajax({
+						dataType		:	'json',
+						type			:	'GET',
+						url				:	'json/stats-' + gameId + '.json',
+						success			:	function(json){
+							var a = [];
+							if( ('undefined' !== json) && (json.length >= 1) ) {
+								for(var i = 0; i < json.length; i++) {
+									var inner = [];
+									for(var j = 0; j < statElements.length; j++) {
+										inner.push(json[i][statElements[j]]);
+									}
+									a.push(inner);
+								}
+							}
+							oTable.fnClearTable(true);
+							oTable.fnAddData(a, true);
+totals();
+						}
+					});
+				});
+
+				var oTable;
+/*			
+				oTable = $('#statistics').dataTable({
+					bJQueryUI: true,
+					sPaginationType : 'full_numbers',
+					iDisplayLength: -1
+				});
+*/
+
+				oTable = $('#statistics').dataTable({
 					bJQueryUI: true,
 					sPaginationType : 'full_numbers',
 					iDisplayLength: -1,
-					ajax: {
-						'url'			:	'json/stats.json',
-						'dataSrc'		:	''
-					},
 					columns		:	[
-						{'data':'id','bVisible':false},
-						{'data':'game','bVisible':true},
+						{bVisible	:	false},
+						{},
+						{},
+						{'sClass':'aafga'},
+						{'sClass':'aafgm'},
+						{'sClass':'aatpa'},
+						{'sClass':'aatpm'},
+						{'sClass':'aafta'},
+						{'sClass':'aaftm'},
+						{'sClass':'aaorb'},
+						{'sClass':'aadrb'},
+						{'sClass':'aaast'},
+						{'sClass':'aablk'},
+						{'sClass':'aastl'},
+						{'sClass':'aatip'},
+						{'sClass':'aachg'},
+						{'sClass':'aatos'}
+					]
+/*
+					columns		:	[
+						{'data':'game'},
 						{'data':'player'},
+						{'data':'uniform'},
 						{'data':'fga','sClass':'aafga'},
 						{'data':'fgm','sClass':'aafgm'},
 						{'data':'tpa','sClass':'aatpa'},
@@ -42,9 +114,10 @@
 						{'data':'drawncharges'},
 						{'data':'turnovers'},
 					]
-					
+*/					
 				});
-				var testtest = $('td');alert(testtest.length);
+
+				var testtest = $('td').find('.aafga');
 				var cnt = 0;
 				for(var x = 0; x < testtest.length; x++){
 					cnt += (parseInt(cnt) + parseInt($(testtest[x]).text()));
@@ -53,13 +126,13 @@
 		</script>
 	</head>
 	<body>
-
+		<div id="game"></div>
 		<table id="statistics" class="display" style="width:100%;">
 			<thead>
 				<tr>
-					<th style="font-size: xx-small !important;">ID</th>
 					<th style="font-size: xx-small !important;">Game</th>
 					<th style="font-size: xx-small !important;">Player</th>
+					<th style="font-size: xx-small !important;">Uni#</th>
 					<th style="font-size: xx-small !important;">FG Att</th>
 					<th style="font-size: xx-small !important;">FG Made</th>
 					<th style="font-size: xx-small !important;">3FG Att</th>

@@ -14,9 +14,11 @@
 		<script src="jquery-theme/jquery-ui.js"></script>
 		<script>
 			$(document).ready(function(){
+								$('#fgattl').empty().append(123);
 				$('#statistics').dataTable({
 					bJQueryUI: true,
 					sPaginationType : 'full_numbers',
+					iDisplayLength: -1,
 					ajax: {
 						'url'			:	'json/stats.json',
 						'dataSrc'		:	''
@@ -25,12 +27,12 @@
 						{'data':'id','bVisible':false},
 						{'data':'game','bVisible':true},
 						{'data':'player'},
-						{'data':'fga'},
-						{'data':'fgm'},
-						{'data':'tpa'},
-						{'data':'tpm'},
-						{'data':'fta'},
-						{'data':'ftm'},
+						{'data':'fga','sClass':'aafga'},
+						{'data':'fgm','sClass':'aafgm'},
+						{'data':'tpa','sClass':'aatpa'},
+						{'data':'tpm','sClass':'aatpm'},
+						{'data':'fta','sClass':'aafta'},
+						{'data':'ftm','sClass':'aaftm'},
 						{'data':'offrebound'},
 						{'data':'defrebound'},
 						{'data':'assist'},
@@ -40,9 +42,13 @@
 						{'data':'drawncharges'},
 						{'data':'turnovers'},
 					]
+					
 				});
-				
-
+				var testtest = $('td');alert(testtest.length);
+				var cnt = 0;
+				for(var x = 0; x < testtest.length; x++){
+					cnt += (parseInt(cnt) + parseInt($(testtest[x]).text()));
+				}
 			});
 		</script>
 	</head>
@@ -72,6 +78,27 @@
 			</thead>
 			<tbody>
 			</tbody>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th><div id="fgattl"></div></th>
+					<th><div id="fgmttl"></div></th>
+					<th><div id="tpattl"></div></th>
+					<th><div id="tpmttl"></div></th>
+					<th><div id="ftattl"></div></th>
+					<th><div id="ftmttl"></div></th>
+					<th><div id="orebttl"></div></th>
+					<th><div id="drebttl"></div></th>
+					<th><div id="asstttl"></div></th>
+					<th><div id="blkttl"></div></th>
+					<th><div id="stlttl"></div></th>
+					<th><div id="tipsttl"></div></th>
+					<th><div id="chrgttl"></div></th>
+					<th><div id="tosttl"></div></th>
+				</tr>
+			</tfoot>
 		</table>
 
 	</body>

@@ -6,7 +6,17 @@
 		<link rel="stylesheet" href="jquery-datatables/datatables.css"/>
 		<link rel="stylesheet" href="jquery-theme/jquery-ui.css"/>
 		<style type="text/css">
+			.center { text-align: center; width: 6%;};
+			.split { width: 4%; }
+			.name { width: 10%; }
 			.small { font-size: xx-small, text-align: right; }
+			.teamCell { width:165px; text-align:center; }
+			.scoreCell { width:35px; text-align:center; }
+			.bold { font-weight: bold; }
+			.stat-split { width: 45px; text-align: center; border-bottom: 1px solid black;}
+			.stat-split-hdr { width: 135px; }
+			.stat-hdr, .stat-cell { width: 40px; text-align: center; }
+				.stat-cell {border-bottom: 1px solid black;}
 		</style>
 		<script src="js/bball.js"></script>
 		<script src="js/jquery.js"></script>
@@ -15,163 +25,103 @@
 		<script src="jquery-theme/jquery-ui.js"></script>
 		<script>
 
-			function updateScore(json) {
-				
-					var ht = json.home;
-					var vt = json.away;
-					var homeScore = json.homescore;
-					var awayScore = json.awayscore;
-					var v1 = json.awayq1;
-					var v2 = json.awayq2;
-					var v3 = json.awayq3;
-					var v4 = json.awayq4;
-					var h1 = json.homeq1;
-					var h2 = json.homeq2;
-					var h3 = json.homeq3;
-					var h4 = json.homeq4;
-					var dt = json.day;
-					$('#awayTeam').empty().append(vt);
-					$('#homeTeam').empty().append(ht);
-					$('#awayQ1').empty().append(v1);
-					$('#awayQ2').empty().append(v2);
-					$('#awayQ3').empty().append(v3);
-					$('#awayQ4').empty().append(v4);
-					$('#homeQ1').empty().append(h1);
-					$('#homeQ2').empty().append(h2);
-					$('#homeQ3').empty().append(h3);
-					$('#homeQ4').empty().append(h4);
-					$('#awayTtl').empty().append(awayScore);
-					$('#homeTtl').empty().append(homeScore);
-			}
 
 			$(document).ready(function(){
-				var selectGame = 'Select game:  ';
-
-				$.ajax({
-					dataType		:	'json',
-					type			:	'GET',
-					url				:	'json/games.json',
-					success			:	function(json){
-										selectGame += '<select name="game" id="game">';
-										selectGame += '<option value=""></option>';
-										for(var a = 0; a < json.length; a++) {
-											selectGame += '<option value="' + json[a].id + '">' + json[a].away + ' @ ' + json[a].home + '</option>';											
-										}
-										selectGame += '</select>';
-										$('#game').empty().append(selectGame);
-					}
-				});
-
-				$('#game').change(function(){
-					var gameId = $(this).find('option:selected').val();
-					
-					if(gameId == '') {
-						gameId = 'all';
-					}
-
-					$.ajax({
-						dataType		:	'json',
-						type			:	'GET',
-						url				:	'json/stats-' + gameId + '.json',
-						success			:	function(json){
-							var a = [];
-							if( ('undefined' !== json) && (json.length >= 1) ) {
-								for(var i = 0; i < json.length; i++) {
-									var inner = [];
-									for(var j = 0; j < statElements.length; j++) {
-										inner.push(json[i][statElements[j]]);
-									}
-									a.push(inner);
-								}
-							}
-							oTable.fnClearTable(true);
-							oTable.fnAddData(a, true);
-							totals();
-						}
-					});
-
-					$.ajax({
-						dataType		:	'json',
-						type			:	'GET',
-						url				:	'json/games.json',
-						success			:	function(json){
-							for(var x = 0; x < json.length; x++) {
-								
-								if(json[x].id == gameId) {
-									updateScore(json[x]);
-								}
-							}
-						}
-					});
-
-
-				});
-
 				var oTable;
-
-				oTable = $('#statistics').dataTable({
-					bJQueryUI: true,
-					sPaginationType : 'full_numbers',
-					iDisplayLength: -1,
-					columns		:	[
-						{bVisible	:	false},
-						{},
-						{},
-						{'sClass':'aafga'},
-						{'sClass':'aafgm'},
-						{'sClass':'aatpa'},
-						{'sClass':'aatpm'},
-						{'sClass':'aafta'},
-						{'sClass':'aaftm'},
-						{'sClass':'aaorb'},
-						{'sClass':'aadrb'},
-						{'sClass':'aaast'},
-						{'sClass':'aablk'},
-						{'sClass':'aastl'},
-						{'sClass':'aatip'},
-						{'sClass':'aachg'},
-						{'sClass':'aatos'}
-					]
-				});
-
-				var testtest = $('td').find('.aafga');
-				var cnt = 0;
-				for(var x = 0; x < testtest.length; x++){
-					cnt += (parseInt(cnt) + parseInt($(testtest[x]).text()));
-				}
+				fetchGames();
+				initGameSelector();
+				initTable();
 			});
 		</script>
 	</head>
 	<body>
 		<div id="game"></div>
 		<div id="board">
-			<table border="1" style="width:50%;">
+			<table border="1" style="width: 350px; display:inline;position:relative;float:left;">
 				<thead>
 					<tr>
-						<th>Team</th>
-						<th>Q1</th>
-						<th>Q2</th>
-						<th>Q3</th>
-						<th>Q4</th>
-						<th>Total</th>
+						<th class="teamCell">Team</th>
+						<th class="scoreCell">Q1</th>
+						<th class="scoreCell">Q2</th>
+						<th class="scoreCell">Q3</th>
+						<th class="scoreCell">Q4</th>
+						<th class="scoreCell bold">Ttl</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><div id="awayTeam">Visitor</div></td>
-						<td><div id="awayQ1">0</div></td>
-						<td><div id="awayQ2">0</div></td>
-						<td><div id="awayQ3">0</div></td>
-						<td><div id="awayQ4">0</div></td>
-						<td><div id="awayTtl">0</div></td>
+						<td class="teamCell"><div id="awayTeam">Visitor</div></td>
+						<td class="scoreCell"><div id="awayQ1">0</div></td>
+						<td class="scoreCell"><div id="awayQ2">0</div></td>
+						<td class="scoreCell"><div id="awayQ3">0</div></td>
+						<td class="scoreCell"><div id="awayQ4">0</div></td>
+						<td class="scoreCell"><div id="awayTtl">0</div></td>
 					</tr>
 					<tr>
-						<td><div id="homeTeam">Home</div></td>
-						<td><div id="homeQ1">0</div></td>
-						<td><div id="homeQ2">0</div></td>
-						<td><div id="homeQ3">0</div></td>
-						<td><div id="homeQ4">0</div></td>
-						<td><div id="homeTtl">0</div></td>
+						<td class="teamCell"><div id="homeTeam">Home</div></td>
+						<td class="scoreCell"><div id="homeQ1">0</div></td>
+						<td class="scoreCell"><div id="homeQ2">0</div></td>
+						<td class="scoreCell"><div id="homeQ3">0</div></td>
+						<td class="scoreCell"><div id="homeQ4">0</div></td>
+						<td class="scoreCell"><div id="homeTtl">0</div></td>
+					</tr>
+				</tbody>
+			</table>
+			<table border="1" style="margin-left: 20px; width: 780px; display:inline;position:relative;float:left;">
+				<thead>
+					<tr>
+						<th colspan="3" class="stat-split-hdr">FG</th>
+						<th colspan="3" class="stat-split-hdr">3P</th>
+						<th colspan="3" class="stat-split-hdr">FT</th>
+						<th colspan="3" class="stat-split-hdr">REB</th>
+						<th colspan="1" class="stat-hdr">AST</th>
+						<th colspan="1" class="stat-hdr">BLK</th>
+						<th colspan="1" class="stat-hdr">STL</th>
+						<th colspan="1" class="stat-hdr">PD</th>
+						<th colspan="1" class="stat-hdr">CT</th>
+						<th colspan="1" class="stat-hdr">TO</th>
+					</tr>
+					<tr>
+						<th class="stat-split">Att</th>
+						<th class="stat-split">Made</th>
+						<th class="stat-split">%</th>
+						<th class="stat-split">Att</th>
+						<th class="stat-split">Made</th>
+						<th class="stat-split">%</th>
+						<th class="stat-split">Att</th>
+						<th class="stat-split">Made</th>
+						<th class="stat-split">%</th>
+						<th class="stat-split">Off</th>
+						<th class="stat-split">Def</th>
+						<th class="stat-split">Ttl</th>
+						<th class="stat-cell"></th>
+						<th class="stat-cell"></th>
+						<th class="stat-cell"></th>
+						<th class="stat-cell"></th>
+						<th class="stat-cell"></th>
+						<th class="stat-cell"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div class="fgattl"></div></td>
+						<td><div class="fgmttl"></div></td>
+						<td><div class="fgpct"></div></td>
+						<td><div class="tpattl"></div></td>
+						<td><div class="tpmttl"></div></td>
+						<td><div class="tppct"></div></td>
+						<td><div class="ftattl"></div></td>
+						<td><div class="ftmttl"></div></td>
+						<td><div class="ftpct"></div></td>
+						<td><div class="orebttl"></div></td>
+						<td><div class="drebttl"></div></td>
+						<td><div class="rebttl"></div></td>
+						<td><div class="asstttl"></div></td>
+						<td><div class="blkttl"></div></td>
+						<td><div class="stlttl"></div></td>
+						<td><div class="tipsttl"></div></td>
+						<td><div class="chrgttl"></div></td>
+						<td><div class="tosttl"></div></td>
 					</tr>
 				</tbody>
 			</table>
@@ -179,23 +129,23 @@
 		<table id="statistics" class="display" style="width:100%;">
 			<thead>
 				<tr>
-					<th style="font-size: xx-small !important;">Game</th>
-					<th style="font-size: xx-small !important;">Player</th>
-					<th style="font-size: xx-small !important;">Uni#</th>
-					<th style="font-size: xx-small !important;">FG Att</th>
-					<th style="font-size: xx-small !important;">FG Made</th>
-					<th style="font-size: xx-small !important;">3FG Att</th>
-					<th style="font-size: xx-small !important;">3FG Made</th>
-					<th style="font-size: xx-small !important;">FT Att</th>
-					<th style="font-size: xx-small !important;">FT Made</th>
-					<th style="font-size: xx-small !important;">Off Reb</th>
-					<th style="font-size: xx-small !important;">Def Reb</th>
-					<th style="font-size: xx-small !important;">Assists</th>
-					<th style="font-size: xx-small !important;">Blocks</th>
-					<th style="font-size: xx-small !important;">Steals</th>
-					<th style="font-size: xx-small !important;">Passes<br/>Defended</th>
-					<th style="font-size: xx-small !important;">Charges<br/>Taken</th>
-					<th style="font-size: xx-small !important;">TOs</th>
+					<th style="text-align:left; font-size: xx-small !important;">Game</th>
+					<th style="text-align:left; font-size: xx-small !important;">Player</th>
+					<th style="text-align:left; font-size: xx-small !important;">Uni#</th>
+					<th style="text-align:left; font-size: xx-small !important;">FG Att</th>
+					<th style="text-align:left; font-size: xx-small !important;">FG Made</th>
+					<th style="text-align:left; font-size: xx-small !important;">3FG Att</th>
+					<th style="text-align:left; font-size: xx-small !important;">3FG Made</th>
+					<th style="text-align:left; font-size: xx-small !important;">FT Att</th>
+					<th style="text-align:left; font-size: xx-small !important;">FT Made</th>
+					<th style="text-align:left; font-size: xx-small !important;">Off Reb</th>
+					<th style="text-align:left; font-size: xx-small !important;">Def Reb</th>
+					<th style="text-align:left; font-size: xx-small !important;">Assists</th>
+					<th style="text-align:left; font-size: xx-small !important;">Blocks</th>
+					<th style="text-align:left; font-size: xx-small !important;">Steals</th>
+					<th style="text-align:left; font-size: xx-small !important;">Passes<br/>Defended</th>
+					<th style="text-align:left; font-size: xx-small !important;">Charges<br/>Taken</th>
+					<th style="text-align:left; font-size: xx-small !important;">TOs</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -205,20 +155,20 @@
 					<th></th>
 					<th></th>
 					<th></th>
-					<th><div id="fgattl"></div></th>
-					<th><div id="fgmttl"></div></th>
-					<th><div id="tpattl"></div></th>
-					<th><div id="tpmttl"></div></th>
-					<th><div id="ftattl"></div></th>
-					<th><div id="ftmttl"></div></th>
-					<th><div id="orebttl"></div></th>
-					<th><div id="drebttl"></div></th>
-					<th><div id="asstttl"></div></th>
-					<th><div id="blkttl"></div></th>
-					<th><div id="stlttl"></div></th>
-					<th><div id="tipsttl"></div></th>
-					<th><div id="chrgttl"></div></th>
-					<th><div id="tosttl"></div></th>
+					<th><div class="fgattl"></div></th>
+					<th><div class="fgmttl"></div></th>
+					<th><div class="tpattl"></div></th>
+					<th><div class="tpmttl"></div></th>
+					<th><div class="ftattl"></div></th>
+					<th><div class="ftmttl"></div></th>
+					<th><div class="orebttl"></div></th>
+					<th><div class="drebttl"></div></th>
+					<th><div class="asstttl"></div></th>
+					<th><div class="blkttl"></div></th>
+					<th><div class="stlttl"></div></th>
+					<th><div class="tipsttl"></div></th>
+					<th><div class="chrgttl"></div></th>
+					<th><div class="tosttl"></div></th>
 				</tr>
 			</tfoot>
 		</table>

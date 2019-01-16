@@ -1,0 +1,227 @@
+<!DOCTYPE>
+<html land="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Lady Knights</title>
+		<link rel="stylesheet" href="jquery-datatables/datatables.css"/>
+		<link rel="stylesheet" href="jquery-theme/jquery-ui.css"/>
+		<style type="text/css">
+			.small { font-size: xx-small, text-align: right; }
+		</style>
+		<script src="js/bball.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="jquery-datatables/datatables.js"></script>
+		<script src="jquery-datatables/dataTables.jqueryui.js"></script>
+		<script src="jquery-theme/jquery-ui.js"></script>
+		<script>
+
+			function updateScore(json) {
+				
+					var ht = json.home;
+					var vt = json.away;
+					var homeScore = json.homescore;
+					var awayScore = json.awayscore;
+					var v1 = json.awayq1;
+					var v2 = json.awayq2;
+					var v3 = json.awayq3;
+					var v4 = json.awayq4;
+					var h1 = json.homeq1;
+					var h2 = json.homeq2;
+					var h3 = json.homeq3;
+					var h4 = json.homeq4;
+					var dt = json.day;
+					$('#awayTeam').empty().append(vt);
+					$('#homeTeam').empty().append(ht);
+					$('#awayQ1').empty().append(v1);
+					$('#awayQ2').empty().append(v2);
+					$('#awayQ3').empty().append(v3);
+					$('#awayQ4').empty().append(v4);
+					$('#homeQ1').empty().append(h1);
+					$('#homeQ2').empty().append(h2);
+					$('#homeQ3').empty().append(h3);
+					$('#homeQ4').empty().append(h4);
+					$('#awayTtl').empty().append(awayScore);
+					$('#homeTtl').empty().append(homeScore);
+			}
+
+			$(document).ready(function(){
+				var selectGame = 'Select game:  ';
+
+				$.ajax({
+					dataType		:	'json',
+					type			:	'GET',
+					url				:	'json/games.json',
+					success			:	function(json){
+										selectGame += '<select name="game" id="game">';
+										selectGame += '<option value=""></option>';
+										for(var a = 0; a < json.length; a++) {
+											selectGame += '<option value="' + json[a].id + '">' + json[a].away + ' @ ' + json[a].home + '</option>';											
+										}
+										selectGame += '</select>';
+										$('#game').empty().append(selectGame);
+					}
+				});
+
+				$('#game').change(function(){
+					var gameId = $(this).find('option:selected').val();
+					
+					if(gameId == '') {
+						gameId = 'all';
+					}
+
+					$.ajax({
+						dataType		:	'json',
+						type			:	'GET',
+						url				:	'json/stats-' + gameId + '.json',
+						success			:	function(json){
+							var a = [];
+							if( ('undefined' !== json) && (json.length >= 1) ) {
+								for(var i = 0; i < json.length; i++) {
+									var inner = [];
+									for(var j = 0; j < statElements.length; j++) {
+										inner.push(json[i][statElements[j]]);
+									}
+									a.push(inner);
+								}
+							}
+							oTable.fnClearTable(true);
+							oTable.fnAddData(a, true);
+							totals();
+						}
+					});
+
+					$.ajax({
+						dataType		:	'json',
+						type			:	'GET',
+						url				:	'json/games.json',
+						success			:	function(json){
+							for(var x = 0; x < json.length; x++) {
+								
+								if(json[x].id == gameId) {
+									updateScore(json[x]);
+								}
+							}
+						}
+					});
+
+
+				});
+
+				var oTable;
+
+				oTable = $('#statistics').dataTable({
+					bJQueryUI: true,
+					sPaginationType : 'full_numbers',
+					iDisplayLength: -1,
+					columns		:	[
+						{bVisible	:	false},
+						{},
+						{},
+						{'sClass':'aafga'},
+						{'sClass':'aafgm'},
+						{'sClass':'aatpa'},
+						{'sClass':'aatpm'},
+						{'sClass':'aafta'},
+						{'sClass':'aaftm'},
+						{'sClass':'aaorb'},
+						{'sClass':'aadrb'},
+						{'sClass':'aaast'},
+						{'sClass':'aablk'},
+						{'sClass':'aastl'},
+						{'sClass':'aatip'},
+						{'sClass':'aachg'},
+						{'sClass':'aatos'}
+					]
+				});
+
+				var testtest = $('td').find('.aafga');
+				var cnt = 0;
+				for(var x = 0; x < testtest.length; x++){
+					cnt += (parseInt(cnt) + parseInt($(testtest[x]).text()));
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="game"></div>
+		<div id="board">
+			<table border="1" style="width:50%;">
+				<thead>
+					<tr>
+						<th>Team</th>
+						<th>Q1</th>
+						<th>Q2</th>
+						<th>Q3</th>
+						<th>Q4</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div id="awayTeam">Visitor</div></td>
+						<td><div id="awayQ1">0</div></td>
+						<td><div id="awayQ2">0</div></td>
+						<td><div id="awayQ3">0</div></td>
+						<td><div id="awayQ4">0</div></td>
+						<td><div id="awayTtl">0</div></td>
+					</tr>
+					<tr>
+						<td><div id="homeTeam">Home</div></td>
+						<td><div id="homeQ1">0</div></td>
+						<td><div id="homeQ2">0</div></td>
+						<td><div id="homeQ3">0</div></td>
+						<td><div id="homeQ4">0</div></td>
+						<td><div id="homeTtl">0</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<table id="statistics" class="display" style="width:100%;">
+			<thead>
+				<tr>
+					<th style="font-size: xx-small !important;">Game</th>
+					<th style="font-size: xx-small !important;">Player</th>
+					<th style="font-size: xx-small !important;">Uni#</th>
+					<th style="font-size: xx-small !important;">FG Att</th>
+					<th style="font-size: xx-small !important;">FG Made</th>
+					<th style="font-size: xx-small !important;">3FG Att</th>
+					<th style="font-size: xx-small !important;">3FG Made</th>
+					<th style="font-size: xx-small !important;">FT Att</th>
+					<th style="font-size: xx-small !important;">FT Made</th>
+					<th style="font-size: xx-small !important;">Off Reb</th>
+					<th style="font-size: xx-small !important;">Def Reb</th>
+					<th style="font-size: xx-small !important;">Assists</th>
+					<th style="font-size: xx-small !important;">Blocks</th>
+					<th style="font-size: xx-small !important;">Steals</th>
+					<th style="font-size: xx-small !important;">Passes<br/>Defended</th>
+					<th style="font-size: xx-small !important;">Charges<br/>Taken</th>
+					<th style="font-size: xx-small !important;">TOs</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th><div id="fgattl"></div></th>
+					<th><div id="fgmttl"></div></th>
+					<th><div id="tpattl"></div></th>
+					<th><div id="tpmttl"></div></th>
+					<th><div id="ftattl"></div></th>
+					<th><div id="ftmttl"></div></th>
+					<th><div id="orebttl"></div></th>
+					<th><div id="drebttl"></div></th>
+					<th><div id="asstttl"></div></th>
+					<th><div id="blkttl"></div></th>
+					<th><div id="stlttl"></div></th>
+					<th><div id="tipsttl"></div></th>
+					<th><div id="chrgttl"></div></th>
+					<th><div id="tosttl"></div></th>
+				</tr>
+			</tfoot>
+		</table>
+
+	</body>
+</html>

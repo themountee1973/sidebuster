@@ -1,8 +1,8 @@
 //(function($){
 
-		var statElements = ['game', 'player', 'uniform', 'fga', 'fgm',
-			'tpa', 'tpm', 'fta', 'ftm', 'offrebound', 'defrebound', 
-			'assist', 'block', 'steal', 'tips', 'drawncharges', 'turnovers'];
+		var statElements = ['game', 'player', 'uniform', 'fga', 'fgm', 'fgp',
+			'tpa', 'tpm', 'tpp', 'fta', 'ftm', 'ftp', 'offrebound', 'defrebound', 
+			'rebttl', 'assist', 'block', 'steal', 'tips', 'drawncharges', 'turnovers'];
 
 		var gameElements = ['id', 'home', 'away', 'day', 'date', 
 			'homeq1', 'homeq2', 'homeq3', 'homeq4', 'awayq1', 'awayq2',
@@ -16,23 +16,43 @@
 					sPaginationType : 'full_numbers',
 					iDisplayLength: -1,
 					columns		:	[
-						{bVisible	:	false},
-						{'sClass':'name'},
-						{'sClass':'center'},
-						{'sClass':'aafga center split'},
-						{'sClass':'aafgm center split'},
-						{'sClass':'aatpa center split'},
-						{'sClass':'aatpm center split'},
-						{'sClass':'aafta center split'},
-						{'sClass':'aaftm center split'},
-						{'sClass':'aaorb center split'},
-						{'sClass':'aadrb center split'},
-						{'sClass':'aaast center'},
-						{'sClass':'aablk center'},
-						{'sClass':'aastl center'},
-						{'sClass':'aatip center'},
-						{'sClass':'aachg center'},
-						{'sClass':'aatos center'}
+						{bVisible	:	false},					//	0
+						{'sClass':'name'},						//	1
+						{'sClass':'center'},					//	2
+						{'sClass':'aafga center split'},		//	3
+						{'sClass':'aafgm center split'},		//	4
+						{
+							'render' : function(data, type, row){
+								return (row[3] == 0) ? '' : (row[4]/row[3]).toFixed(3);
+							}
+						},										//	5
+						{'sClass':'aatpa center split'},		//	6
+						{'sClass':'aatpm center split'},		//	7
+						{
+							'render' : function(data, type, row){
+								return (row[6] == 0) ? '' : (row[7]/row[6]).toFixed(3);
+							}
+						},										//	8
+						{'sClass':'aafta center split'},		//	9
+						{'sClass':'aaftm center split'},		//	10
+						{
+							'render' : function(data, type, row){
+								return (row[9] == 0) ? '' : (row[10]/row[9]).toFixed(3);
+							}
+						},										//	11
+						{'sClass':'aaorb center split'},		//	12
+						{'sClass':'aadrb center split'},		//	13
+						{
+							'render' : function(data, type, row){
+								return row[13] + row[12];
+							}
+						},										//	14
+						{'sClass':'aaast center'},				//	15
+						{'sClass':'aablk center'},				//	16				
+						{'sClass':'aastl center'},				//	17
+						{'sClass':'aatip center'},				//	18
+						{'sClass':'aachg center'},				//	19
+						{'sClass':'aatos center'}				//	20
 					]
 				});
 		}
@@ -91,7 +111,7 @@
 				url				:	'json/games.json',
 				success			:	function(json){
 									selectGame += '<select name="game" id="game">';
-									selectGame += '<option value=""></option>';
+									selectGame += '<option value="season"></option>';
 									for(var a = 0; a < json.length; a++) {
 										selectGame += '<option value="' + json[a].id + '">' + json[a].away + ' @ ' + json[a].home + '</option>';											
 									}

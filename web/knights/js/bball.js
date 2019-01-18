@@ -106,7 +106,7 @@
 
 		function fetchGames() {
 			//var selectGame = 'Select game:  ';
-			var selectGame = '<table border="1" style="width:355px !important; margin-bottom: 10px;">';
+			var selectGame = '<table border="1" style="width:365px !important; margin-bottom: 10px;">';
 			selectGame += '<tr><td>Select game:  </td><td>';
 
 			$.ajax({

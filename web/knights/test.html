@@ -10,7 +10,7 @@
 			.split { width: 4%; }
 			.name { width: 10%; }
 			.small { font-size: xx-small, text-align: right; }
-			.teamCell { width:165px; text-align:center; }
+			.teamCell { width:170px; text-align:center; }
 			.scoreCell { width:35px; text-align:center; }
 			.bold { font-weight: bold; }
 			.stat-split { width: 45px; text-align: center; border-bottom: 1px solid black;}
@@ -37,7 +37,7 @@
 	<body>
 		<div id="game"></div>
 		<div id="board">
-			<table border="1" style="width: 350px; display:inline;position:relative;float:left;">
+			<table border="1" style="width: 355px; display:inline;position:relative;float:left;margin-bottom:10px;">
 				<thead>
 					<tr>
 						<th class="teamCell">Team</th>
@@ -74,12 +74,7 @@
 						<th colspan="3" class="stat-split-hdr">3P</th>
 						<th colspan="3" class="stat-split-hdr">FT</th>
 						<th colspan="3" class="stat-split-hdr">REB</th>
-						<th colspan="1" class="stat-hdr">AST</th>
-						<th colspan="1" class="stat-hdr">BLK</th>
-						<th colspan="1" class="stat-hdr">STL</th>
-						<th colspan="1" class="stat-hdr">PD</th>
-						<th colspan="1" class="stat-hdr">CT</th>
-						<th colspan="1" class="stat-hdr">TO</th>
+						<th colspan="6"></th>
 					</tr>
 					<tr>
 						<th class="stat-split">Att</th>
@@ -94,34 +89,34 @@
 						<th class="stat-split">Off</th>
 						<th class="stat-split">Def</th>
 						<th class="stat-split">Ttl</th>
-						<th class="stat-cell"></th>
-						<th class="stat-cell"></th>
-						<th class="stat-cell"></th>
-						<th class="stat-cell"></th>
-						<th class="stat-cell"></th>
-						<th class="stat-cell"></th>
+						<th class="stat-cell">AST</th>
+						<th class="stat-cell">BLK</th>
+						<th class="stat-cell">STL</th>
+						<th class="stat-cell">PD</th>
+						<th class="stat-cell">CT</th>
+						<th class="stat-cell">TO</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><div class="fgattl center"></div></td>
-						<td><div class="fgmttl center"></div></td>
-						<td><div class="fgpct center"></div></td>
-						<td><div class="tpattl center"></div></td>
-						<td><div class="tpmttl center"></div></td>
-						<td><div class="tppct center"></div></td>
-						<td><div class="ftattl center"></div></td>
-						<td><div class="ftmttl center"></div></td>
-						<td><div class="ftpct center"></div></td>
-						<td><div class="orebttl center"></div></td>
-						<td><div class="drebttl center"></div></td>
-						<td><div class="rebttl center"></div></td>
-						<td><div class="asstttl center"></div></td>
-						<td><div class="blkttl center"></div></td>
-						<td><div class="stlttl center"></div></td>
-						<td><div class="tipsttl center"></div></td>
-						<td><div class="chrgttl center"></div></td>
-						<td><div class="tosttl center"></div></td>
+						<td><div class="fgattl center">0</div></td>
+						<td><div class="fgmttl center">0</div></td>
+						<td><div class="fgpct center">0</div></td>
+						<td><div class="tpattl center">0</div></td>
+						<td><div class="tpmttl center">0</div></td>
+						<td><div class="tppct center">0</div></td>
+						<td><div class="ftattl center">0</div></td>
+						<td><div class="ftmttl center">0</div></td>
+						<td><div class="ftpct center">0</div></td>
+						<td><div class="orebttl center">0</div></td>
+						<td><div class="drebttl center">0</div></td>
+						<td><div class="rebttl center">0</div></td>
+						<td><div class="asstttl center">0</div></td>
+						<td><div class="blkttl center">0</div></td>
+						<td><div class="stlttl center">0</div></td>
+						<td><div class="tipsttl center">0</div></td>
+						<td><div class="chrgttl center">0</div></td>
+						<td><div class="tosttl center">0</div></td>
 					</tr>
 				</tbody>
 			</table>
@@ -131,18 +126,18 @@
 				<tr>
 					<th style="text-align:left; font-size: xx-small !important;">Game</th>
 					<th style="text-align:left; font-size: xx-small !important;">Player</th>
-					<th style="text-align:left; font-size: xx-small !important;">Uni#</th>
-					<th style="text-align:left; font-size: xx-small !important;">FG Att</th>
-					<th style="text-align:left; font-size: xx-small !important;">FG Made</th>
-					<th style="text-align:left; font-size: xx-small !important;">FG %</th>
-					<th style="text-align:left; font-size: xx-small !important;">3FG Att</th>
-					<th style="text-align:left; font-size: xx-small !important;">3FG Made</th>
-					<th style="text-align:left; font-size: xx-small !important;">3FG %</th>
-					<th style="text-align:left; font-size: xx-small !important;">FT Att</th>
-					<th style="text-align:left; font-size: xx-small !important;">FT Made</th>
-					<th style="text-align:left; font-size: xx-small !important;">FT %</th>
-					<th style="text-align:left; font-size: xx-small !important;">Off Reb</th>
-					<th style="text-align:left; font-size: xx-small !important;">Def Reb</th>
+					<th style="text-align:left; font-size: xx-small !important;">#</th>
+					<th style="text-align:left; font-size: xx-small !important;">FGA</th>
+					<th style="text-align:left; font-size: xx-small !important;">FGM</th>
+					<th style="text-align:left; font-size: xx-small !important;">FG%</th>
+					<th style="text-align:left; font-size: xx-small !important;">3PA</th>
+					<th style="text-align:left; font-size: xx-small !important;">3PM</th>
+					<th style="text-align:left; font-size: xx-small !important;">3P%</th>
+					<th style="text-align:left; font-size: xx-small !important;">FTA</th>
+					<th style="text-align:left; font-size: xx-small !important;">FTM</th>
+					<th style="text-align:left; font-size: xx-small !important;">FT%</th>
+					<th style="text-align:left; font-size: xx-small !important;">OReb</th>
+					<th style="text-align:left; font-size: xx-small !important;">DReb</th>
 					<th style="text-align:left; font-size: xx-small !important;">Total</th>
 					<th style="text-align:left; font-size: xx-small !important;">Assists</th>
 					<th style="text-align:left; font-size: xx-small !important;">Blocks</th>

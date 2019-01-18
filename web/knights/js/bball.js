@@ -13,12 +13,14 @@
 		function initTable() {
 				oTable = $('#statistics').dataTable({
 					bJQueryUI: true,
-					sPaginationType : 'full_numbers',
 					iDisplayLength: -1,
+					aLenghtMenu: [[10,25,50,100,-1],[10,25,50,100,"View All"]],
+					//bLengthChange: false,
+					//info: false,
 					columns		:	[
 						{bVisible	:	false},					//	0
 						{'sClass':'name'},						//	1
-						{'sClass':'center'},					//	2
+						{'sClass':'center','bSortable':false},					//	2
 						{'sClass':'aafga center split'},		//	3
 						{'sClass':'aafgm center split'},		//	4
 						{
@@ -103,7 +105,9 @@
 		}
 
 		function fetchGames() {
-			var selectGame = 'Select game:  ';
+			//var selectGame = 'Select game:  ';
+			var selectGame = '<table border="1" style="width:355px !important; margin-bottom: 10px;">';
+			selectGame += '<tr><td>Select game:  </td><td>';
 
 			$.ajax({
 				dataType		:	'json',
@@ -115,7 +119,7 @@
 									for(var a = 0; a < json.length; a++) {
 										selectGame += '<option value="' + json[a].id + '">' + json[a].away + ' @ ' + json[a].home + '</option>';											
 									}
-									selectGame += '</select>';
+									selectGame += '</select></td></tr></table>';
 									$('#game').empty().append(selectGame);
 				}
 			});

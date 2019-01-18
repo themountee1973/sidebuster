@@ -1,0 +1,11 @@
+[
+	{"game":"season","player":"Sky","uniform":1,"fga":13,"fgm":0,"tpa":0,"tpm":0,"fta":2,"ftm":2,"offrebound":1,"defrebound":10,"assist":1,"block":0,"steal":6,"tips":9,"drawncharges":0,"turnovers":2},
+	{"game":"season","player":"Walenca","uniform":5,"fga":23,"fgm":1,"tpa":1,"tpm":0,"fta":4,"ftm":1,"offrebound":2,"defrebound":10,"assist":2,"block":0,"steal":17,"tips":15,"drawncharges":0,"turnovers":12},
+	{"game":"season","player":"Nikia","uniform":8,"fga":2,"fgm":0,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":1,"defrebound":4,"assist":0,"block":0,"steal":1,"tips":2,"drawncharges":0,"turnovers":4},
+	{"game":"season","player":"Paris","uniform":10,"fga":19,"fgm":5,"tpa":7,"tpm":2,"fta":13,"ftm":7,"offrebound":2,"defrebound":2,"assist":2,"block":6,"steal":14,"tips":19,"drawncharges":0,"turnovers":14},
+	{"game":"season","player":"Ava","uniform":14,"fga":36,"fgm":8,"tpa":1,"tpm":0,"fta":4,"ftm":1,"offrebound":5,"defrebound":11,"assist":3,"block":5,"steal":11,"tips":7,"drawncharges":0,"turnovers":3},
+	{"game":"season","player":"Jenna","uniform":15,"fga":10,"fgm":0,"tpa":0,"tpm":0,"fta":3,"ftm":1,"offrebound":2,"defrebound":11,"assist":4,"block":3,"steal":9,"tips":6,"drawncharges":0,"turnovers":14},
+	{"game":"season","player":"Maya","uniform":17,"fga":30,"fgm":7,"tpa":9,"tpm":2,"fta":5,"ftm":2,"offrebound":7,"defrebound":13,"assist":4,"block":0,"steal":14,"tips":18,"drawncharges":0,"turnovers":14},
+	{"game":"season","player":"Rohanna","uniform":23,"fga":10,"fgm":4,"tpa":7,"tpm":3,"fta":0,"ftm":0,"offrebound":3,"defrebound":3,"assist":1,"block":0,"steal":7,"tips":12,"drawncharges":0,"turnovers":8},
+	{"game":"season","player":"Savannah","uniform":25,"fga":2,"fgm":0,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":6,"defrebound":5,"assist":0,"block":0,"steal":1,"tips":6,"drawncharges":0,"turnovers":2}
+]

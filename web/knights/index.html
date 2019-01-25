@@ -28,6 +28,7 @@
 
 			$(document).ready(function(){
 				var oTable;
+				var avgTable;
 				fetchGames();
 				initGameSelector();
 				initTable();
@@ -36,7 +37,7 @@
 	</head>
 	<body>
 		<div id="game"></div>
-		<div id="board">
+		<div id="board" style="height: 85px;">
 			<table border="1" style="width: 365px; display:inline;position:relative;float:left;margin-bottom:10px;">
 				<thead>
 					<tr>
@@ -175,6 +176,5 @@
 				</tr>
 			</tfoot>
 		</table>
-
 	</body>
 </html>

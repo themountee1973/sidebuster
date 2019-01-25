@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Score</title>
-		<link rel="stylesheet" href="bball.css"/>
+		<link rel="stylesheet" href="css/bball.css"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="bball.js"></script>
+		<script type="text/javascript" src="js/bball.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#games').change(function(){

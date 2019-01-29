@@ -1,4 +1,4 @@
-var statElements = ['game', 'player', 'uniform', 'fga', 'fgm', 'fgp',
+var statElements = ['game', 'player', 'uniform', 'tp', 'ppg', 'fga', 'fgm', 'fgp',
 	'tpa', 'tpm', 'tpp', 'fta', 'ftm', 'ftp', 'offrebound', 'defrebound', 
 	'rebttl', 'assist', 'block', 'steal', 'tips', 'drawncharges', 'turnovers'];
 
@@ -14,92 +14,63 @@ function initTable() {
 			//bLengthChange: false,
 			//info: false,
 			columns		:	[
-				{bVisible	:	false},					//	0
-				{'sClass':'name'},						//	1
+				{bVisible	:	false},									//	0
+				{'sClass':'name'},										//	1
 				{'sClass':'center','bSortable':false},					//	2
-				{'sClass':'aafga center split'},		//	3
-				{'sClass':'aafgm center split'},		//	4
 				{
-					'render' : function(data, type, row){
-						return (row[3] == 0) ? '0.000' : (row[4]/row[3]).toFixed(3);
+					'sClass' : 'center plyrpts',
+					'render' : function(data, type, row) {
+						return (row[6]*2) + (row[9]*3) + row[12];
 					}
-				},										//	5
-				{'sClass':'aatpa center split'},		//	6
-				{'sClass':'aatpm center split'},		//	7
+				},														//	3								
 				{
-					'render' : function(data, type, row){
-						return (row[6] == 0) ? '0.000' : (row[7]/row[6]).toFixed(3);
+					'sClass' : 'center plyrppg',
+					'render' : function(data, type, row) {
+						if($('#game').find('option:selected').val() == 'season') {
+							return (((row[6]*2) + (row[9]*3) + row[12])/5).toFixed(1);
+						}else{
+							return '';	
+						}
 					}
-				},										//	8
-				{'sClass':'aafta center split'},		//	9
-				{'sClass':'aaftm center split'},		//	10
+				},														//	4
+				{'sClass':'aafga center split'},						//	5
+				{'sClass':'aafgm center split'},						//	6
 				{
+					'sClass':'center',
 					'render' : function(data, type, row){
-						return (row[9] == 0) ? '0.000' : (row[10]/row[9]).toFixed(3);
+						return (row[5] == 0) ? '0.000' : (row[6]/row[5]).toFixed(3);
 					}
-				},										//	11
-				{'sClass':'aaorb center split'},		//	12
-				{'sClass':'aadrb center split'},		//	13
+				},														//	7
+				{'sClass':'aatpa center split'},						//	8
+				{'sClass':'aatpm center split'},						//	9
 				{
+					'sClass':'center',
 					'render' : function(data, type, row){
-						return row[13] + row[12];
+						return (row[8] == 0) ? '0.000' : (row[9]/row[8]).toFixed(3);
 					}
-				},										//	14
-				{'sClass':'aaast center'},				//	15
-				{'sClass':'aablk center'},				//	16				
-				{'sClass':'aastl center'},				//	17
-				{'sClass':'aatip center'},				//	18
-				{'sClass':'aachg center'},				//	19
-				{'sClass':'aatos center'}				//	20
-			]
-		});
-}
-
-function initAvgTable() {
-		avgTable = $('#averages').dataTable({
-			bJQueryUI: true,
-			iDisplayLength: -1,
-			aLenghtMenu: [[10,25,50,100,-1],[10,25,50,100,"View All"]],
-			//bLengthChange: false,
-			//info: false,
-			columns		:	[
-				{bVisible	:	false},					//	0
-				{'sClass':'name'},						//	1
-				{'sClass':'center','bSortable':false},					//	2
-				{'sClass':'aafga center split'},		//	3
-				{'sClass':'aafgm center split'},		//	4
+				},														//	10
+				{'sClass':'aafta center split'},						//	11
+				{'sClass':'aaftm center split'},						//	12
 				{
+					'sClass':'center',
 					'render' : function(data, type, row){
-						return (row[3] == 0) ? '0.000' : (row[4]/row[3]).toFixed(3);
+						return (row[11] == 0) ? '0.000' : (row[12]/row[11]).toFixed(3);
 					}
-				},										//	5
-				{'sClass':'aatpa center split'},		//	6
-				{'sClass':'aatpm center split'},		//	7
+				},														//	13
+				{'sClass':'aaorb center split'},						//	14
+				{'sClass':'aadrb center split'},						//	15
 				{
+					'sClass':'center',
 					'render' : function(data, type, row){
-						return (row[6] == 0) ? '0.000' : (row[7]/row[6]).toFixed(3);
+						return row[15] + row[14];
 					}
-				},										//	8
-				{'sClass':'aafta center split'},		//	9
-				{'sClass':'aaftm center split'},		//	10
-				{
-					'render' : function(data, type, row){
-						return (row[9] == 0) ? '0.000' : (row[10]/row[9]).toFixed(3);
-					}
-				},										//	11
-				{'sClass':'aaorb center split'},		//	12
-				{'sClass':'aadrb center split'},		//	13
-				{
-					'render' : function(data, type, row){
-						return row[13] + row[12];
-					}
-				},										//	14
-				{'sClass':'aaast center'},				//	15
-				{'sClass':'aablk center'},				//	16				
-				{'sClass':'aastl center'},				//	17
-				{'sClass':'aatip center'},				//	18
-				{'sClass':'aachg center'},				//	19
-				{'sClass':'aatos center'}				//	20
+				},														//	16
+				{'sClass':'aaast center'},								//	17
+				{'sClass':'aablk center'},								//	18				
+				{'sClass':'aastl center'},								//	19
+				{'sClass':'aatip center'},								//	20
+				{'sClass':'aachg center'},								//	21
+				{'sClass':'aatos center'}								//	22
 			]
 		});
 }
@@ -187,6 +158,8 @@ function totals() {
 	var pdTtl = 0;
 	var ctTtl = 0;
 	var toTtl = 0;
+	var plyrTtl = 0;
+	var plyrPpg = 0;
 
 	var fgas = $('td.aafga');
 	var fgms = $('td.aafgm');
@@ -202,6 +175,8 @@ function totals() {
 	var pds = $('td.aatip');
 	var cts = $('td.aachg');
 	var tos = $('td.aatos');
+	var ppts = $('td.plyrpts');
+	var teampts = $('td.plyrppg');
 
 	for(var x = 0; x < fgas.length; x++) {
 		fgaTtl += parseInt($(fgas[x]).text());
@@ -245,6 +220,18 @@ function totals() {
 	for(var x = 0; x < tos.length; x++) {
 		toTtl += parseInt($(tos[x]).text());
 	}
+
+	for(var x = 0; x < ppts.length; x++) {
+		plyrTtl += parseInt($(ppts[x]).text());
+	}
+	
+	for(var x = 0; x < teampts.length; x++) {
+		plyrPpg += parseFloat($(teampts[x]).text());
+	}
+	
+	$('.teampts').empty().append(plyrTtl);
+	$('.teamttl').empty().append((plyrPpg).toFixed(1));
+
 	$('.fgattl').empty().append(fgaTtl);
 	$('.fgmttl').empty().append(fgmTtl);
 	$('.fgpct').empty().append( ((fgmTtl/fgaTtl).toFixed(3)));

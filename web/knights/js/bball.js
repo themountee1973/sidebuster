@@ -230,7 +230,12 @@ function totals() {
 	}
 	
 	$('.teampts').empty().append(plyrTtl);
-	$('.teamttl').empty().append((plyrPpg).toFixed(1));
+	
+	if($('#game').find('option:selected').val() == 'season'){
+		$('.teamttl').empty().append((plyrPpg).toFixed(1));
+	}else{
+		$('.teamttl').empty();
+	}
 
 	$('.fgattl').empty().append(fgaTtl);
 	$('.fgmttl').empty().append(fgmTtl);

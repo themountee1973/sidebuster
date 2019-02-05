@@ -27,7 +27,7 @@ function initTable() {
 					'sClass' : 'center plyrppg',
 					'render' : function(data, type, row) {
 						if($('#game').find('option:selected').val() == 'season') {
-							return (((row[6]*2) + (row[9]*3) + row[12])/5).toFixed(1);
+							return (((row[6]*2) + (row[9]*3) + row[12])/6).toFixed(1);
 						}else{
 							return '';	
 						}
@@ -293,31 +293,31 @@ function updateScore(json) {
 		$('#homeTtl').empty().append(homeScore);
 		/*
 		if($('#game').find('option:selected').val() === 'season') {
-			$('#awayQ1avg').empty().append(v1/5);
-			$('#awayQ2avg').empty().append(v2/5);
-			$('#awayQ3avg').empty().append(v3/5);
-			$('#awayQ4avg').empty().append(v4/5);
-			$('#homeQ1avg').empty().append(h1/5);
-			$('#homeQ2avg').empty().append(h2/5);
-			$('#homeQ3avg').empty().append(h3/5);
-			$('#homeQ4avg').empty().append(h4/5);
-			$('#awayTtlavg').empty().append(awayScore/5);
-			$('#homeTtlavg').empty().append(homeScore/5);
-			$('.fgaavg').empty().append($('#board').find('.fgattl').text()/5);
-			$('.fgmavg').empty().append($('#board').find('.fgmttl').text()/5);
-			$('.tpaavg').empty().append($('#board').find('.tpattl').text()/5);
-			$('.tpmavg').empty().append($('#board').find('.tpmttl').text()/5);
-			$('.ftaavg').empty().append($('#board').find('.ftattl').text()/5);
-			$('.ftmavg').empty().append($('#board').find('.ftmttl').text()/5);
-			$('.orebavg').empty().append($('#board').find('.orebttl').text()/5);
-			$('.drebavg').empty().append($('#board').find('.drebttl').text()/5);
-			$('.rebavg').empty().append($('#board').find('.rebttl').text()/5);
-			$('.asstavg').empty().append($('#board').find('.asstttl').text()/5);
-			$('.blkavg').empty().append($('#board').find('.blkttl').text()/5);
-			$('.stlavg').empty().append($('#board').find('.stlttl').text()/5);
-			$('.tipsavg').empty().append($('#board').find('.tipsttl').text()/5);
-			$('.chrgavg').empty().append($('#board').find('.chrgttl').text()/5);
-			$('.tosavg').empty().append($('#board').find('.tosttl').text()/5);
+			$('#awayQ1avg').empty().append(v1/6);
+			$('#awayQ2avg').empty().append(v2/6);
+			$('#awayQ3avg').empty().append(v3/6);
+			$('#awayQ4avg').empty().append(v4/6);
+			$('#homeQ1avg').empty().append(h1/6);
+			$('#homeQ2avg').empty().append(h2/6);
+			$('#homeQ3avg').empty().append(h3/6);
+			$('#homeQ4avg').empty().append(h4/6);
+			$('#awayTtlavg').empty().append(awayScore/6);
+			$('#homeTtlavg').empty().append(homeScore/6);
+			$('.fgaavg').empty().append($('#board').find('.fgattl').text()/6);
+			$('.fgmavg').empty().append($('#board').find('.fgmttl').text()/6);
+			$('.tpaavg').empty().append($('#board').find('.tpattl').text()/6);
+			$('.tpmavg').empty().append($('#board').find('.tpmttl').text()/6);
+			$('.ftaavg').empty().append($('#board').find('.ftattl').text()/6);
+			$('.ftmavg').empty().append($('#board').find('.ftmttl').text()/6);
+			$('.orebavg').empty().append($('#board').find('.orebttl').text()/6);
+			$('.drebavg').empty().append($('#board').find('.drebttl').text()/6);
+			$('.rebavg').empty().append($('#board').find('.rebttl').text()/6);
+			$('.asstavg').empty().append($('#board').find('.asstttl').text()/6);
+			$('.blkavg').empty().append($('#board').find('.blkttl').text()/6);
+			$('.stlavg').empty().append($('#board').find('.stlttl').text()/6);
+			$('.tipsavg').empty().append($('#board').find('.tipsttl').text()/6);
+			$('.chrgavg').empty().append($('#board').find('.chrgttl').text()/6);
+			$('.tosavg').empty().append($('#board').find('.tosttl').text()/6);
 		}
 		*/
 }

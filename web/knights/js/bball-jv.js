@@ -27,7 +27,7 @@ function initTable() {
 					'sClass' : 'center plyrppg',
 					'render' : function(data, type, row) {
 						if($('#game').find('option:selected').val() == 'season') {
-							return (((row[6]*2) + (row[9]*3) + row[12])/7).toFixed(1);
+							return (((row[6]*2) + (row[9]*3) + row[12])/5).toFixed(1);
 						}else{
 							return '';	
 						}
@@ -86,7 +86,7 @@ function initGameSelector() {
 		$.ajax({
 			dataType		:	'json',
 			type			:	'GET',
-			url				:	'json/stats-' + gameId + '.json',
+			url				:	'json/stats-' + gameId + '-jv.json',
 			success			:	function(json){
 				var a = [];
 				if( ('undefined' !== json) && (json.length >= 1) ) {
@@ -108,7 +108,7 @@ function initGameSelector() {
 		$.ajax({
 			dataType		:	'json',
 			type			:	'GET',
-			url				:	'json/games.json',
+			url				:	'json/games-jv.json',
 			success			:	function(json){
 				for(var x = 0; x < json.length; x++) {
 					
@@ -123,13 +123,13 @@ function initGameSelector() {
 }
 
 function fetchGames() {
-	var selectGame = '<table style="width:470px !important; margin-bottom: 10px; border: 2px red outset; border-radius: 5px;">';
+	var selectGame = '<table style="width:440px !important; margin-bottom: 10px; border: 2px red outset; border-radius: 5px;">';
 	selectGame += '<tr><td style="width:90px; font-weight:bold; font-family:Tw Cen MT;">Select game:  </td><td>';
 
 	$.ajax({
 		dataType		:	'json',
 		type			:	'GET',
-		url				:	'json/games.json',
+		url				:	'json/games-jv.json',
 		success			:	function(json){
 							selectGame += '<select name="game" id="game">';
 							selectGame += '<option value="season"></option>';
@@ -239,15 +239,33 @@ function totals() {
 
 	$('.fgattl').empty().append(fgaTtl);
 	$('.fgmttl').empty().append(fgmTtl);
-	$('.fgpct').empty().append( ((fgmTtl/fgaTtl).toFixed(3)));
+	//$('.fgpct').empty().append( ((fgmTtl/fgaTtl).toFixed(3)));
+
+	$('.fgpct').empty().append(
+		function(){
+			return (fgmTtl == 0) ? '0.000' : ((fgmTtl/fgaTtl).toFixed(3));
+		}
+	);
 
 	$('.tpattl').empty().append(tpaTtl);
 	$('.tpmttl').empty().append(tpmTtl);
-	$('.tppct').empty().append( ((tpmTtl/tpaTtl).toFixed(3)));
+	//$('.tppct').empty().append( ((tpmTtl/tpaTtl).toFixed(3)));
+
+	$('.tppct').empty().append( 
+		function(){
+			return (tpmTtl == 0) ? '0.000' : ((tpmTtl/tpaTtl).toFixed(3));	
+		}
+	);
 
 	$('.ftattl').empty().append(ftaTtl);
 	$('.ftmttl').empty().append(ftmTtl);
-	$('.ftpct').empty().append(  ((ftmTtl/ftaTtl).toFixed(3)));	
+	//$('.ftpct').empty().append(  ((ftmTtl/ftaTtl).toFixed(3)));
+
+	$('.ftpct').empty().append(  
+		function(){
+			return (ftmTtl == 0) ? '0.000' : ((ftmTtl/ftaTtl).toFixed(3));
+		}
+	);	
 
 	$('.orebttl').empty().append(orebTtl);
 	$('.drebttl').empty().append(drebTtl);
@@ -641,7 +659,14 @@ function sumTotals() {
 	}
 	$('#ftatt').empty().append(t);
 	$('#ftmade').empty().append(u);
-	$('#ftpct').empty().append((u/t).toFixed(3));
+	//$('#ftpct').empty().append((u/t).toFixed(3));
+	
+	$('#ftpct').empty().append(
+		function(){
+			return (u == 0) ? '0.000' : (u/t).toFixed(3);
+		}
+	);
+
 	var z = 0;
 	var b = 0;
 	for(var a = 0; a < fgsAtt.length; a++){
@@ -652,7 +677,14 @@ function sumTotals() {
 	}
 	$('#fgatt').empty().append(z);
 	$('#fgmade').empty().append(b);
-	$('#fgpct').empty().append((b/z).toFixed(3));
+	//$('#fgpct').empty().append((b/z).toFixed(3));
+
+	$('#fgpct').empty().append(
+		function(){
+			return (b == 0) ? '0.000' : (b/z).toFixed(3);
+		}
+	);
+
 	var y = 0;
 	var c = 0;
 	for(var a = 0; a < tpsAtt.length; a++){
@@ -663,5 +695,11 @@ function sumTotals() {
 	}
 	$('#tpatt').empty().append(y);
 	$('#tpmade').empty().append(c);
-	$('#tppct').empty().append((c/y).toFixed(3));
+	//$('#tppct').empty().append((c/y).toFixed(3));
+	
+	$('#tppct').empty().append(
+		function(){
+			return (c == 0) ? '0.000' : (c/y).toFixed(3);
+		}
+	);
 }

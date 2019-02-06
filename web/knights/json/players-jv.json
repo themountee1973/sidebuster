@@ -1,0 +1,12 @@
+[
+	{"id":"ec7679fc-2a43-11e9-9f86-484d7ef34ff5","firstname":"Shorty","lastname":"Player-3","position":"F","uniform":3,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ac95-2a43-11e9-9f86-484d7ef34ff5","firstname":"Faith","lastname":"Player-4","position":"G","uniform":4,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ad09-2a43-11e9-9f86-484d7ef34ff5","firstname":"Alani","lastname":"Player-6","position":"G/F","uniform":6,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":7,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ad4b-2a43-11e9-9f86-484d7ef34ff5","firstname":"Bri","lastname":"Player-9","position":"F/G","uniform":9,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ad82-2a43-11e9-9f86-484d7ef34ff5","firstname":"Holly","lastname":"Player-11","position":"F/C","uniform":11,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":7,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76adb1-2a43-11e9-9f86-484d7ef34ff5","firstname":"Annika","lastname":"Player-12","position":"F/G","uniform":12,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ade4-2a43-11e9-9f86-484d7ef34ff5","firstname":"CC","lastname":"Player-13","position":"G","uniform":13,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":7,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ae17-2a43-11e9-9f86-484d7ef34ff5","firstname":"LaLa","lastname":"Player-18","position":"G","uniform":18,"school":"e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ae43-2a43-11e9-9f86-484d7ef34ff5","firstname":"Marianna","lastname":"Player-21","position":"C","uniform":21,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":6,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"},
+	{"id":"ec76ae72-2a43-11e9-9f86-484d7ef34ff5","firstname":"JuJu","lastname":"Player-27","position":"C","uniform":27,"school":"1e8e1b0f-13d9-11e9-9846-cc2f713dca42","grade":7,"level":"5f8930dc-13d8-11e9-9846-cc2f713dca42"}
+]

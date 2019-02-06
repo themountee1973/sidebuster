@@ -5,5 +5,6 @@
 	{"id":"game03","home":"Mitchell","away":"Natomas Charter","day":"1/15/2019","date":"2019-01-15 17:00:00","homeq1":2,"homeq2":2,"homeq3":2,"homeq4":0,"awayq1":6,"awayq2":13,"awayq3":5,"awayq4":13,"homescore":6,"awayscore":37},
 	{"id":"game04","home":"Natomas Charter","away":"Bradshaw Christian","day":"1/17/2019","date":"2019-01-17 16:00:00","homeq1":7,"homeq2":7,"homeq3":15,"homeq4":11,"awayq1":2,"awayq2":8,"awayq3":2,"awayq4":6,"homescore":40,"awayscore":18},
 	{"id":"game05","home":"Bradshaw Christian","away":"Natomas Charter","day":"1/24/2019","date":"2019-01-24 16:00:00","homeq1":5,"homeq2":3,"homeq3":6,"homeq4":4,"awayq1":6,"awayq2":7,"awayq3":10,"awayq4":4,"homescore":18,"awayscore":27},
-	{"id":"game06","home":"Mills","away":"Natomas Charter","day":"1/31/2019","date":"2019-01-31 17:00:00","homeq1":0,"homeq2":2,"homeq3":12,"homeq4":5,"awayq1":2,"awayq2":4,"awayq3":8,"awayq4":2,"homescore":19,"awayscore":16}
+	{"id":"game06","home":"Mills","away":"Natomas Charter","day":"1/31/2019","date":"2019-01-31 17:00:00","homeq1":0,"homeq2":2,"homeq3":12,"homeq4":5,"awayq1":2,"awayq2":4,"awayq3":8,"awayq4":2,"homescore":19,"awayscore":16},
+	{"id":"game07","home":"Natomas Charter","away":"Capital Christian","day":"2/05/2019","date":"2019-02-05 16:00:00","homeq1":1,"homeq2":12,"homeq3":4,"homeq4":6,"awayq1":3,"awayq2":2,"awayq3":5,"awayq4":6,"homescore":23,"awayscore":16}
 ]

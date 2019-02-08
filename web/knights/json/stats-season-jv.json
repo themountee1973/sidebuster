@@ -1,12 +1,12 @@
 [
-	{"game":"season","player":"Shorty","uniform":3,"fga":12,"fgm":1,"tpa":0,"tpm":0,"fta":8,"ftm":1,"offrebound":5,"defrebound":10,"assist":3,"block":1,"steal":2,"tips":10,"drawncharges":0,"turnovers":11},
-	{"game":"season","player":"Faith","uniform":4,"fga":15,"fgm":1,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":7,"defrebound":4,"assist":0,"block":0,"steal":10,"tips":9,"drawncharges":0,"turnovers":4},
-	{"game":"season","player":"Alani","uniform":6,"fga":38,"fgm":8,"tpa":14,"tpm":2,"fta":4,"ftm":1,"offrebound":5,"defrebound":13,"assist":4,"block":0,"steal":27,"tips":12,"drawncharges":0,"turnovers":20},
-	{"game":"season","player":"Bri","uniform":9,"fga":8,"fgm":0,"tpa":0,"tpm":0,"fta":6,"ftm":0,"offrebound":3,"defrebound":6,"assist":1,"block":0,"steal":9,"tips":2,"drawncharges":0,"turnovers":19},
-	{"game":"season","player":"Holly","uniform":11,"fga":9,"fgm":0,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":0,"defrebound":5,"assist":1,"block":0,"steal":5,"tips":4,"drawncharges":0,"turnovers":9},
-	{"game":"season","player":"Annika","uniform":12,"fga":10,"fgm":2,"tpa":0,"tpm":0,"fta":4,"ftm":0,"offrebound":8,"defrebound":7,"assist":5,"block":0,"steal":10,"tips":14,"drawncharges":0,"turnovers":12},
-	{"game":"season","player":"CC","uniform":13,"fga":65,"fgm":11,"tpa":5,"tpm":0,"fta":2,"ftm":0,"offrebound":7,"defrebound":7,"assist":6,"block":3,"steal":24,"tips":25,"drawncharges":0,"turnovers":25},
-	{"game":"season","player":"LaLa","uniform":18,"fga":6,"fgm":0,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":2,"defrebound":2,"assist":1,"block":1,"steal":5,"tips":2,"drawncharges":0,"turnovers":7},
-	{"game":"season","player":"Marianna","uniform":21,"fga":12,"fgm":2,"tpa":0,"tpm":0,"fta":2,"ftm":0,"offrebound":7,"defrebound":5,"assist":0,"block":8,"steal":0,"tips":8,"drawncharges":0,"turnovers":5},
-	{"game":"season","player":"JuJu","uniform":27,"fga":19,"fgm":8,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":8,"defrebound":4,"assist":0,"block":5,"steal":4,"tips":1,"drawncharges":0,"turnovers":4}
+	{"game":"season","player":"Shorty" ,"uniform":3,"fga":12,"fgm":1,"tpa":0,"tpm":0,"fta":10,"ftm":1,"offrebound":5,"defrebound":14,"assist":3,"block":2,"steal":2,"tips":13,"drawncharges":0,"turnovers":13},
+	{"game":"season","player":"Faith","uniform":4,"fga":16,"fgm":1,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":9,"defrebound":4,"assist":0,"block":1,"steal":10,"tips":11,"drawncharges":0,"turnovers":4},
+	{"game":"season","player":"Alani","uniform":6,"fga":43,"fgm":9,"tpa":25,"tpm":2,"fta":6,"ftm":2,"offrebound":5,"defrebound":17,"assist":6,"block":1,"steal":37,"tips":17,"drawncharges":0,"turnovers":27},
+	{"game":"season","player":"Bri","uniform":9,"fga":10,"fgm":0,"tpa":0,"tpm":0,"fta":8,"ftm":0,"offrebound":4,"defrebound":7,"assist":2,"block":0,"steal":12,"tips":4,"drawncharges":0,"turnovers":23},
+	{"game":"season","player":"Holly","uniform":11,"fga":11,"fgm":0,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":0,"defrebound":7,"assist":1,"block":0,"steal":5,"tips":5,"drawncharges":0,"turnovers":9},
+	{"game":"season","player":"Annika","uniform":12,"fga":12,"fgm":2,"tpa":0,"tpm":0,"fta":4,"ftm":0,"offrebound":8,"defrebound":8,"assist":5,"block":0,"steal":14,"tips":14,"drawncharges":0,"turnovers":12},
+	{"game":"season","player":"CC","uniform":13,"fga":73,"fgm":12,"tpa":8,"tpm":0,"fta":4,"ftm":0,"offrebound":9,"defrebound":8,"assist":6,"block":4,"steal":28,"tips":33,"drawncharges":0,"turnovers":29},
+	{"game":"season","player":"LaLa","uniform":18,"fga":6,"fgm":0,"tpa":1,"tpm":0,"fta":0,"ftm":0,"offrebound":2,"defrebound":2,"assist":1,"block":1,"steal":5,"tips":2,"drawncharges":0,"turnovers":8},
+	{"game":"season","player":"Marianna","uniform":21,"fga":15,"fgm":3,"tpa":0,"tpm":0,"fta":2,"ftm":0,"offrebound":11,"defrebound":6,"assist":0,"block":8,"steal":1,"tips":9,"drawncharges":0,"turnovers":6},
+	{"game":"season","player":"JuJu","uniform":27,"fga":19,"fgm":8,"tpa":0,"tpm":0,"fta":0,"ftm":0,"offrebound":8,"defrebound":6,"assist":0,"block":5,"steal":4,"tips":3,"drawncharges":0,"turnovers":4}	
 ]

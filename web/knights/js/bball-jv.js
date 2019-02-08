@@ -27,7 +27,7 @@ function initTable() {
 					'sClass' : 'center plyrppg',
 					'render' : function(data, type, row) {
 						if($('#game').find('option:selected').val() == 'season') {
-							return (((row[6]*2) + (row[9]*3) + row[12])/5).toFixed(1);
+							return (((row[6]*2) + (row[9]*3) + row[12])/6).toFixed(1);
 						}else{
 							return '';	
 						}

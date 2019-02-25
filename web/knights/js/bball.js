@@ -33,8 +33,18 @@ function initTable() {
 						}
 					}
 				},														//	4
-				{'sClass':'aafga center split'},						//	5
-				{'sClass':'aafgm center split'},						//	6
+				{
+					'sClass':'aafga center split',
+					'render' : function(data, type, row) {
+						return row[4] + row[8];
+					}
+				},														//	5
+				{
+					'sClass':'aafgm center split',
+					'render' : function(data, type, row) {
+						return row[5] + row[9];
+					}
+				},														//	6
 				{
 					'sClass':'center',
 					'render' : function(data, type, row){

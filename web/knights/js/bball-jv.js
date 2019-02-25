@@ -36,13 +36,13 @@ function initTable() {
 				{
 					'sClass':'aafga center split',
 					'render' : function(data, type, row) {
-						return row[5] + row[9];
+						return row[5] + row[8];
 					}
 				},														//	5
 				{
 					'sClass':'aafgm center split',
 					'render' : function(data, type, row) {
-						return row[6] + row[10];
+						return row[6] + row[9];
 					}
 				},														//	6
 				{

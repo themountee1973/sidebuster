@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <html>
 	<head>
+		<meta charset="utf8"/>
 		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
 		<script type="text/javascript" src="js/score.js"></script>
 		<script type="text/javascript">
@@ -32,7 +33,7 @@
 		<div id="teamselect" style="display:inline;"></div>
 		<form id="score" name="score" method="POST" action="savescore.php">
 			<div id="scoretable"></div>
-			<div id="date"><input type="text" name="day" id="day" /></div>
+			<div id="date">DATE:  <input type="text" name="day" id="day" placeholder="mm/dd/yyyy"/></div>
 			<div id="submitDiv"><input type="submit" value="save"/>
 		</form>
 	</body>

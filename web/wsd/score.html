@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<script type="text/javascript" src="jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="/new/avathon/score.js"></script>
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+				Constants.participants = new ModularMethods.outerTeam();
+				$('#eventcontrol').hide();
+				$('#builder').empty().append(TableMethods.builderTable());
+				init();
+			});
+			
+		</script>
+	</head>
+	
+	<body>
+		<div id="eventcontrol">
+			<table>
+				<tr>
+					<td><input type="button" value="IM" id="im" style="width:80px;"/></td>
+					<td><input type="button" value="FREE(S)" id="shortfree" style="width:80px;"/></td>
+					<td><input type="button" value="BACK" id="back" style="width:80px;"/></td>
+					<td><input type="button" value="FREE(L)" id="longfree" style="width:80px;"/></td>
+					<td><input type="button" value="BREAST" id="breast" style="width:80px;"/></td>
+					<td><input type="button" value="FLY" id="fly" style="width:80px;"/></td>
+				</tr>
+			</table>
+		</div>
+		<div id="builder" style="display:inline;"></div>
+		<div id="teamselect" style="display:inline;"></div>
+		<form id="score" name="score" method="POST" action="savescore.php">
+			<div id="scoretable"></div>
+			<div id="date"><input type="text" name="day" id="day" /></div>
+			<div id="submitDiv"><input type="submit" value="save"/>
+		</form>
+	</body>
+</html>

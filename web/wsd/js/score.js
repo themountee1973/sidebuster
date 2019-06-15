@@ -302,7 +302,7 @@ var Constants = {
 		100026:['#00CCFF', 'black'],
 		100045:'#CCFF00',
 		100046:'#660000',
-		100030:['black','lightblue'],
+		100030:['lightblue','black'],
 		100036:'#FFFFFF',
 		100047:'#000000',
 		100037:['#FFFF00','blue'],

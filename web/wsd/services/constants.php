@@ -2,7 +2,7 @@
 
 	header('Content-type: application/json');
 
-	include_once 'in.php';
+	include_once './in.php';
 
 	$response = array();
 	$records = array();

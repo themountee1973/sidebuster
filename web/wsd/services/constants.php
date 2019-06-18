@@ -16,13 +16,13 @@
 	
 		switch($discriminator) {
 			case 'type':
-				$query = 'CALL getConstantsByType(\'' . $param . '\');';
+				$query = 'SELECT * FROM getConstantsByType(\'' . $param . '\');';
 				break;
 			case 'value':
-				$query = 'CALL getConstantFromValue(\'' . $param . '\');';
+				$query = 'SELECT * FROM getConstantFromValue(\'' . $param . '\');';
 				break;
 			default:
-				$query = 'CALL getConstants();';
+				$query = 'SELECT * FROM getConstants();';
 				break;
 		}
 		

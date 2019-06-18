@@ -22,19 +22,23 @@
 				$query = 'SELECT * FROM getConstantFromValue(\'' . $param . '\');';
 				break;
 			default:
-				$query = 'SELECT * FROM getConstants();';
 				break;
 		}
 		
-		$resultSet = $pdo->query($query);
+	} else {
 		
-		while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
-			array_push($records, $row);
-		}
+		$query = 'SELECT * from getConstants();';
 
-		$response['success'] = 1;
-		$response['records'] = $records;
 	}
+
+	$resultSet = $pdo->query($query);
+	
+	while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
+		array_push($records, $row);
+	}
+
+	$response['success'] = 1;
+	$response['records'] = $records;
 
 	echo json_encode($response);
 ?>

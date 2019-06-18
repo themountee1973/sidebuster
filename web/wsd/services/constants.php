@@ -26,16 +26,14 @@
 				break;
 		}
 		
-		if( null != $pdo ) {
-
-			$resultSet = $pdo->query($query);
-			
-			while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
-				array_push($records, $row);
-			}
-
-			$response['success'] = 1;
+		$resultSet = $pdo->query($query);
+		
+		while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
+			array_push($records, $row);
 		}
+
+		$response['success'] = 1;
+		$response['records'] = $records;
 	}
 
 	echo json_encode($response);

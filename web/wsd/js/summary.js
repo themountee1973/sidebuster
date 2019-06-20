@@ -30,7 +30,11 @@
 	var totalPointsAgainst = json.totalagainst;
  }
  
- 
+ function makeSummaryTable(list) {
+		
+	var tbl = 
+	 
+ }
  
  function initSummary() {
 	var summaries = [];

@@ -10,14 +10,24 @@
 	$query;
 
 	$param = $_GET['conf'];
+	$all = $_GET['all'];
+	$team = $_GET['team'];
 
-	if( !isset($param) ) {
+	if ( isset($team) ) {
+
+		$query = 'SELECT * FROM getMeetsByTeam(\'' . $team . '\');';
+
+	} else if( !isset($param) ) {
 	
 		$query = 'SELECT * FROM wholeEnchillada();';
 		
-	} else {
-		
+	} else if ( !isset($all) ) {
+
 		$query = 'SELECT * FROM wholeConfEnchillada(\'' . $param . '\');';
+
+	} else {
+			
+		$query = 'SELECT * FROM getMeetsByConference(\'' . $param . '\');';
 
 	}
 

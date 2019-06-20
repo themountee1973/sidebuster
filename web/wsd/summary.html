@@ -3,50 +3,19 @@
 	<head>
 		<meta charset="utf8"/>
 		<title>Conferences</title>
+		<link href="css/cupertino/jquery-ui.css" rel="stylesheet"/>
+		<link href="css/demo_table_jui.css" rel="stylesheet"/>
+		<link href="css/wsd.css" rel="stylesheet"/>
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery.dataTables.min.js"></script>
 		<script src="js/summary.js"></script>
 		<script>
 			$(document).ready(function(){
 
 				var list = initSummary();
-				alert(list.length);
-				var table = '<table><thead>';
-				table += '<tr>';
-				table += '<th colspan="2"></th>';
-				table += '<th colspan="2">Overall</th>';
-				table += '<th colspan="8">Conference Points</th>';
-				table += '<th colspan="6">Overall Points</th>';
-				table += '</tr>';
-				table += '<tr>';
-				table += '<th>CONFERENCE</th>';
-				table += '<th>TEAM</th>';
-				table += '<th>W</th>';
-				table += '<th>L</th>';
-				table += '<th>W</th>';
-				table += '<th>L</th>';
-				table += '<th>Home (for)</th>';
-				table += '<th>Home (against)</th>';
-				table += '<th>Away (for)</th>';
-				table += '<th>Away (against)</th>';
-				table += '<th>Total (for)</th>';
-				table += '<th>Total (against)</th>';
-				table += '<th>Home (for)</th>';
-				table += '<th>Home (against)</th>';
-				table += '<th>Away (for)</th>';
-				table += '<th>Away (against)</th>';
-				table += '<th>Total (for)</th>';
-				table += '<th>Total (against)</th>';
-				table += '</tr>';
-				table += '</thead>';
-				table += '<tbody>';
-				
-				for(var i = 0; i < list.length; i++) {
-					table += makeSummaryRow(list[i]);
-				}
-				
-				table += '</tbody></table>';
-				$('#main').empty().append(table);
+				$('#main').empty().append(makeTable(list));
+				initLinks();
 			});
 		</script>
 	</head>

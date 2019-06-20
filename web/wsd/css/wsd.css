@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+.ui-icon {
+	display: inline !important;
+}
+
+.winner {
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	color: green;
+}
+
+.loser {
+	text-align: center;
+}
+
+.center-min {
+	text-align: center;
+	width: 50px !important;
+}
+
+.center-med {
+	text-align: center;
+	width: 150px !important;
+}
+
+#meets_length, #scores_length {
+	width: 40% !important; 
+	position: relative !important; 
+	display: inline !important; 
+	float: left;
+}
+
+#meets_filter, #scores_filter {
+	width: auto !important; 
+	position: relative !important; 
+	display: inline !important; 
+	float: right;
+}
+
+#meets_wrapper, #scores_wrapper {
+	width:70% !important;
+}
+

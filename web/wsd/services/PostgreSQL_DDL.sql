@@ -103,10 +103,10 @@ RETURNS CHAR(32)
 AS $$
 DECLARE
 	cRecId CHAR(32);
-	cUuid CHAR(32);
+	cUuid CHAR(36);
 BEGIN
 	cUuid := uuid_generate_v1();
-	SELECT REPLACE (cUuid, '-', '') INTO cRecId;
+	SELECT REPLACE(cUuid, '-', '') INTO cRecId;
 	RETURN cRecId;
 END; $$
 LANGUAGE PLPGSQL;
@@ -382,6 +382,7 @@ $$
 LANGUAGE SQL;
 
 --	Returns a schedule of meets with scores for already completed meets.
+DROP FUNCTION IF EXISTS getReadableMeetsScores;
 CREATE OR REPLACE FUNCTION getReadableMeetsScores()
 RETURNS TABLE(
 	ID CHAR(32), 
@@ -406,6 +407,7 @@ $$
 LANGUAGE SQL;
 
 --	Returns a schedule of meets with scores for already completed meets.
+DROP FUNCTION IF EXISTS getMeetsMarginOfVictory;
 CREATE OR REPLACE FUNCTION getMeetsMarginOfVictory()
 RETURNS TABLE(
 	ID CHAR(32), 
@@ -432,6 +434,7 @@ AS $$
 $$
 LANGUAGE SQL;
 
+DROP FUNCTION IF EXISTS getMeets;
 CREATE OR REPLACE FUNCTION getMeets()
 RETURNS TABLE(
 	ID CHAR(32), 
@@ -658,6 +661,51 @@ BEGIN
 END; $$
 LANGUAGE PLPGSQL;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --	Retrieve non-conference meets
 CREATE OR REPLACE FUNCTION getNonConferenceMeets()
 RETURNS TABLE(id CHAR(32), 
@@ -681,8 +729,8 @@ AS $$
 $$
 LANGUAGE SQL;
 
---	Retrieve conference meets for a provided conference
-CREATE OR REPLACE FUNCTION getMeetsByConference(IN p_conference CHAR(64))
+--	Retrieve team meets for a provided team
+CREATE OR REPLACE FUNCTION getMeetsByTeam(IN p_team VARCHAR(20))
 RETURNS TABLE(id CHAR(32), 
 	visitor VARCHAR(20), 
 	vScore REAL, 
@@ -699,8 +747,33 @@ AS $$
 	FROM meet m
 	INNER JOIN team AS v ON m.away = v.id
 	INNER JOIN team AS h ON m.home = h.id
-	WHERE v.conference = p_conference
-	AND h.conference = p_conference
+	WHERE v.id = getTeamId(p_team)
+	OR h.id = getTeamId(p_team)
+	ORDER BY m.day;
+$$
+LANGUAGE SQL;
+
+
+--	Retrieve conference meets for a provided conference
+CREATE OR REPLACE FUNCTION getMeetsByConference(IN p_conference VARCHAR(20))
+RETURNS TABLE(id CHAR(32), 
+	visitor VARCHAR(20), 
+	vScore REAL, 
+	home VARCHAR(20), 
+	hScore REAL, 
+	day VARCHAR(10))
+AS $$
+	SELECT m.id AS id,
+		v.team AS visitor,
+		m.awayScore AS vScore,
+		h.team AS home,
+		m.homeScore AS hScore,
+		m.day AS day
+	FROM meet m
+	INNER JOIN team AS v ON m.away = v.id
+	INNER JOIN team AS h ON m.home = h.id
+	WHERE v.conference = getConstantByValue(p_conference)
+	AND h.conference = getConstantByValue(p_conference)
 	ORDER BY m.day;
 $$
 LANGUAGE SQL;
@@ -737,6 +810,8 @@ AS $$
 $$
 LANGUAGE SQL;
 
+
+--	#######################################################################################################################	--
 DROP FUNCTION IF EXISTS getSeasonPointsFor;
 CREATE OR REPLACE FUNCTION getSeasonPointsFor(IN p_team VARCHAR(20))
 RETURNS TABLE(HOMEFOR VARCHAR(6), HOMEAGAINST VARCHAR(6), AWAYFOR VARCHAR(6), AWAYAGAINST VARCHAR(6)) 
@@ -758,6 +833,7 @@ END; $$
 LANGUAGE PLPGSQL;	
 
 select getSeasonPointsFor('West Sac');
+--	#######################################################################################################################	--
 
 
 CREATE OR REPLACE FUNCTION getPoints(IN p_team VARCHAR(20))
@@ -877,7 +953,19 @@ AS $$
 $$
 LANGUAGE SQL;
 
-CREATE OR REPLACE FUNCTION wholeConfEnchillada(IN p_conference CHAR(64))
+CREATE OR REPLACE FUNCTION getConstantByValue(IN p_constantValue VARCHAR(255))
+RETURNS CHAR(64)
+AS $$
+DECLARE
+	constantId CHAR(64);
+BEGIN
+	SELECT id INTO constantId
+	FROM constants WHERE value LIKE CONCAT('%',p_constantValue,'%');
+	RETURN constantId;
+END; $$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE FUNCTION wholeConfEnchillada(IN p_conference VARCHAR(20))
 RETURNS TABLE(conference VARCHAR(20), 
 	team VARCHAR(20), 
 	wins INT, 
@@ -906,7 +994,7 @@ AS $$
 		(getConfPoints(t.team)).*, 
 		(getPoints(t.team)).*
 	FROM team t INNER JOIN constants conf on t.conference = conf.id
-	WHERE conf.id = p_conference
+	WHERE conf.id = getConstantByValue(p_conference)
 	ORDER BY conf.sequence, CONFWINS desc, WINS desc;
 $$
 LANGUAGE SQL;

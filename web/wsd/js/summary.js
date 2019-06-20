@@ -55,7 +55,7 @@
 	
 	
 	tbl += '</tr>';
-	
+	alert(tbl);
 	return tbl;
  }
  

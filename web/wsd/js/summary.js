@@ -63,7 +63,8 @@
 	var summaries = [];
 	
 	 $.ajax({
-		 dataType	:	'json',
+		async		:	false,
+		dataType	:	'json',
 			type	:	'GET',
 			url		:	'/wsd/services/meets.php',
 		success		:	function(json) {

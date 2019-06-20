@@ -11,6 +11,42 @@
 
 				var list = initSummary();
 
+				var table = '<table><thead>';
+				table += '<tr>';
+				table += '<th colspan="2"></th>';
+				table += '<th colspan="2">Overall</th>';
+				table += '<th colspan="8">Conference Points</th>';
+				table += '<th colspan="6">Overall Points</th>';
+				table += '</tr>';
+				table += '<tr>';
+				table += '<th>CONFERENCE</th>';
+				table += '<th>TEAM</th>';
+				table += '<th>W</th>';
+				table += '<th>L</th>';
+				table += '<th>W</th>';
+				table += '<th>L</th>';
+				table += '<th>Home (for)</th>';
+				table += '<th>Home (against)</th>';
+				table += '<th>Away (for)</th>';
+				table += '<th>Away (against)</th>';
+				table += '<th>Total (for)</th>';
+				table += '<th>Total (against)</th>';
+				table += '<th>Home (for)</th>';
+				table += '<th>Home (against)</th>';
+				table += '<th>Away (for)</th>';
+				table += '<th>Away (against)</th>';
+				table += '<th>Total (for)</th>';
+				table += '<th>Total (against)</th>';
+				table += '</tr>';
+				table += '</thead>';
+				table += '<tbody>';
+				
+				for(var i = 0; i < list.length; i++) {
+					table += makeSummaryRow(list[i]);
+				}
+				
+				table += '</tbody></table>';
+				$('#main').empty().append(table);
 			});
 		</script>
 	</head>

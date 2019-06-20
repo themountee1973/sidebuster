@@ -55,7 +55,7 @@
 	
 	
 	tbl += '</tr>';
-	alert(tbl);
+
 	return tbl;
  }
  
@@ -74,7 +74,7 @@
 								
 								for(var x = 0; x < count; x++) {
 	
-									summaries.push(new Summary(json.records[x]));
+									summaries.push(json.records[x]);
 									
 								}
 								

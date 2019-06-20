@@ -9,26 +9,6 @@
  *
  *
  */
- function Summary(json) {
-	var conference = json.conference;
-	var team = json.team;
-	var wins = json.wins;
-	var losses = json.losses;
-	var conferenceWins = json.cwins;
-	var conferenceLosses = json.closses;
-	var conferencePointsForHome = json.chomefor;
-	var conferencePointsAgainstHome = json.chomeagainst;
-	var conferencePointsForAway = json.cawayfor;
-	var conferencePointsAgainstAway = json.cawayagainst;
-	var conferenceTotalPointsFor = json.cttlfor;
-	var conferenceTotalPointsAgainst = json.cttlagainst;
-	var totalPointsHomeFor = json.homefor;
-	var totalPointsHomeAgainst = json.homeagainst;
-	var totalPointsAwayFor = json.awayfor;
-	var totalPointsAwayAgainst = json.awayagainst;
-	var totalPointsFor = json.totalfor;
-	var totalPointsAgainst = json.totalagainst;
- }
  
  function makeSummaryRow(list) {
 		

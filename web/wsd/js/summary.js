@@ -159,7 +159,7 @@ function initInitialConfs() {
 									oTable.fnClearTable(true);
 									oTable.fnAddData(json.records, true);
 								},
-			complete		:	function(){ initConfsMeets(); initTeams(); }
+			complete		:	function(){ initConfsMeets(); initInitialTeams(); }
 		});
 	});
 }
@@ -218,7 +218,7 @@ function initConfsMeets() {
 			complete		:	function(){ /** something here to fetch the meet results for the conference and initialize teams to get meets for them **/ 
 									$('#main').empty().append(makeConfMeetTable(confMeets));
 									initMeetResults();
-									initTeams();
+									initInitialTeams();
 								}
 		});
 	});

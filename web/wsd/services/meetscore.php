@@ -18,7 +18,7 @@
 		$res = $pdo->query($query);
 
 //		while( $row = pg_fetch_assoc($res) ) {
-		while( $row = $res->fetch(PDO::BOTH) ) {
+		while( $row = $res->fetch(PDO::FETCH_BOTH) ) {
 
 			array_push($records, $row);
 
@@ -29,6 +29,7 @@
 		$response['records'] = $records;
 
 //		pg_close($pdo);
+		$pdo->close();
 
 	} else {
 

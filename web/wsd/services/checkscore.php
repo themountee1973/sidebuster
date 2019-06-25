@@ -22,7 +22,7 @@
 
 		$response['success'] = 1;
 
-		pg_close($pdo);
+		$pdo->close();
 
 	} else {
 

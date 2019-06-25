@@ -130,8 +130,8 @@ function initLinks() {
 		aoColumns		:	[{'sClass':'conference'},{'sClass':'team'},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
 		bSort		:	false
 	}).css({'width':'100%'});
-	initConfs();
-	initTeams();
+	initInitialConfs();
+	initInitialTeams();
 }
 
 function initMeetResults() {
@@ -146,7 +146,7 @@ function initMeetResults() {
 	//initConfs();
 }
 
-function initConfs() {
+function initInitialConfs() {
 	$('.conference').click(function(){
 		$.ajax({
 			async			:	false,
@@ -164,7 +164,7 @@ function initConfs() {
 	});
 }
 
-function initTeams() {
+function initInitialTeams() {
 	var teamMeets = [];
 
 	$('.team').click(function(){

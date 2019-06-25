@@ -17,17 +17,17 @@
 
 		$query = 'SELECT * FROM getMeetsByTeam(\'' . $team . '\');';
 
-	} else if( !isset($param) ) {
+	} else if( isset($param) ) {
 	
-		$query = 'SELECT * FROM wholeEnchillada();';
+		$query = 'SELECT * FROM getMeetsByConference(\'' . $param . '\');';
 		
-	} else if ( !isset($all) ) {
+	} else if ( isset($all) && isset($param) ) {
 
 		$query = 'SELECT * FROM wholeConfEnchillada(\'' . $param . '\');';
 
 	} else {
 			
-		$query = 'SELECT * FROM getMeetsByConference(\'' . $param . '\');';
+		$query = 'SELECT * FROM wholeEnchillada();';
 
 	}
 

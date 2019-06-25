@@ -22,12 +22,14 @@
 		$queryCreateRecord = 'SELECT createNewMeetRecord(\'' . $day . '\',' . $team1 . ',' . $team2 . ') as ID;';
 
 		print_r($queryCreateRecord);
-			print_r('1:  ' . $pdo);
-	
+
+		print_r('$recId = ' . $recId);
+
+		print_r('end test');
 		if ( !isset($_POST['hiddenID']) ) {
 
 			$idRes = $pdo->query($queryCreateRecord);
-			print_r('2:  ' . $pdo);
+
 			while( $row = $idRes->fetch(PDO::FETCH_BOTH) ) {
 				$recId = $row['ID'];
 			}

@@ -14,9 +14,11 @@
 
 		$query = 'SELECT * FROM getMeetScore(' . $team1 . ',' . $team2 . ',\'' . $day . '\');';
 
-		$res = pg_query($pdo, $query);
+//		$res = pg_query($pdo, $query);
+		$res = $pdo->query($query);
 
-		while( $row = pg_fetch_assoc($res) ) {
+//		while( $row = pg_fetch_assoc($res) ) {
+		while( $row = $res->fetch(PDO::BOTH) ) {
 
 			array_push($records, $row);
 

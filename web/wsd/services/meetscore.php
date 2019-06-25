@@ -21,7 +21,7 @@
 //		while( $row = $res->fetch(PDO::FETCH_BOTH) ) {
 
 			array_push($records, $row);
-
+			$response['recordId'] = $row['id'];
 		}
 
 		$response['success'] = 1;

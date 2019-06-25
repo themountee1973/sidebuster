@@ -147,6 +147,8 @@ function initMeetResults() {
 }
 
 function initInitialConfs() {
+	var confMeetData = [];
+
 	$('.conference').click(function(){
 		$.ajax({
 			async			:	false,
@@ -156,8 +158,16 @@ function initInitialConfs() {
 //				url			:	'/sidebuster/web/wsd/services/meets.php',
 				data		:	{'conf':$(this).text()},
 			success			:	function(json) {
+									var count = json.records.length;
+
+									for(var xx = 0; xx < count; xx++) {
+										
+										confMeetData.push(json.records[xx]);
+
+									}
+
 									oTable.fnClearTable(true);
-									oTable.fnAddData(json.records, true);
+									oTable.fnAddData(confMeetData, true);
 								},
 			complete		:	function(){ initConfsMeets(); initInitialTeams(); }
 		});

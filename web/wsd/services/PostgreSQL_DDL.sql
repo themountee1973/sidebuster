@@ -661,8 +661,34 @@ BEGIN
 END; $$
 LANGUAGE PLPGSQL;
 
+DROP FUNCTION IF EXISTS checkScoreExists;
+CREATE OR REPLACE FUNCTION checkScoreExists(IN p_team1 INT, IN p_team2 INT, IN p_day VARCHAR(10))
+RETURNS INT
+AS $$
+DECLARE
+	returnValue INT;
+BEGIN
+SELECT 1 INTO returnValue FROM meetscore
+WHERE (team_1 = p_team1 OR team_2 = p_team1)
+AND (team_1 = p_team2 OR team_2 = p_team2)
+AND day = p_day;
+IF returnValue IS NULL THEN
+returnValue := 0;
+END IF;
+RETURN returnValue;
+END; $$
+LANGUAGE PLPGSQL;
 
-
+DROP FUNCTION IF EXISTS getMeetScore;
+CREATE OR REPLACE FUNCTION getMeetScore(IN p_team1 INT, IN p_team2 INT, IN p_day VARCHAR(10))
+RETURNS SETOF meetscore
+AS $$
+	SELECT * FROM meetscore
+	WHERE (team_1 = p_team1 OR team_2 = p_team2)
+	AND (team_1 = p_team2 OR team_2 = p_team2)
+	AND day = p_day;
+$$
+LANGUAGE SQL;
 
 
 

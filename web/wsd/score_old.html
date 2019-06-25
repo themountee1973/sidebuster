@@ -1,8 +1,7 @@
 <!DOCTYPE>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="utf8"/>
-		<link rel="stylesheet" href="css/ws.css"/>
 		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
 		<script type="text/javascript" src="js/score.js"></script>
 		<script type="text/javascript">
@@ -12,6 +11,7 @@
 				$('#eventcontrol').hide();
 				$('#builder').empty().append(TableMethods.builderTable());
 				init();
+				$('#date, #submitDiv').hide();
 			});
 			
 		</script>
@@ -20,7 +20,7 @@
 	<body>
 		<div id="eventcontrol">
 			<table>
-				<tr style="display:none;">
+				<tr>
 					<td><input type="button" value="IM" id="im" style="width:80px;"/></td>
 					<td><input type="button" value="FREE(S)" id="shortfree" style="width:80px;"/></td>
 					<td><input type="button" value="BACK" id="back" style="width:80px;"/></td>
@@ -32,11 +32,10 @@
 		</div>
 		<div id="builder" style="display:inline;"></div>
 		<div id="teamselect" style="display:inline;"></div>
-		<form id="score" name="score" method="POST" action="save.php">
+		<form id="score" name="score" method="POST" action="savescore.php">
 			<div id="scoretable"></div>
-			<div id="date" class="bottom"><input type="text" name="day" id="day" placeholder="mm/dd/yyyy"/></div>
-			<div id="submitDiv" class="bottom"><input type="submit" value="save"/>
-			<div id="teams-hidden" style="display:none;"><input type="text" id="hiddenID" name="hiddenID" value=""/><input type="text" id="hidden1" name="team1" value=""/><input type="text" id="hidden2" name="team2" value=""/></div>
+			<div id="date">DATE:  <input type="text" name="day" id="day" placeholder="mm/dd/yyyy"/></div>
+			<div id="submitDiv"><input type="submit" value="save"/>
 		</form>
 	</body>
 </html>

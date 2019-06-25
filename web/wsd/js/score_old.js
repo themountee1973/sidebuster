@@ -285,33 +285,33 @@ var Constants = {
 		18:'19th',19:'20th'
 	},
 	teamColors : {
-		100038:['blue','white'],
+		100038:'#3366FF',
 		100032:['maroon','gold'],
-		100039:['dodgerblue','red'],
+		100039:'#3333FF',
 		100034:['darkblue','white'],
 		100040:['#339933','black'],
 		100023:['#0066FF','yellow'],
 		100027:'#993300',
-		100035:['white','darkblue'],
+		100035:'#3333FF',
 		100042:['#339933','black'],
-		100024:['blue','white'],
+		100024:'#660033',
 		100028:['#000000','gold'],
-		100044:['#FF0000','black'],
-		100025:['blue', 'red'],
-		100029:['gray','purple'],
+		100044:'#FF0000',
+		100025:'#0033FF',
+		100029:'#990033',
 		100026:['#00CCFF', 'black'],
-		100045:['black','#CCFF00'],
-		100046:['#660000','blue'],
-		100030:['#CC9900','black'],
+		100045:'#CCFF00',
+		100046:'#660000',
+		100030:['lightblue','black'],
 		100036:'#FFFFFF',
-		100047:['black','yellow'],
+		100047:'#000000',
 		100037:['#FFFF00','blue'],
 		100031:['#FF0000','black'],
 		100043:['#0066FF','white'],
 		100049:['#FF6600','black'],
-		100041:['red','white'],
+		100041:['#FF0033','black'],
 		100033:['#000099','white'],
-		100048:['black','blue']
+		100048:'#6699FF'
 	}
 };
 
@@ -354,14 +354,7 @@ var InitMethods = {
 			
 			Constants.individualScoring = individual[0];
 			Constants.individualPlaces = individual[1];
-
-			if(selectedType == 'timeTrials') {
-				$('#teamCount').val(1).trigger('keyup');
-			} else if(selectedType == 'dualMeet') {
-				$('#teamCount').val(2).trigger('keyup');
-			} else {
-				$('#teamCount').val(0).trigger('keyup');
-			}
+		
 		});
 	},
 	initTeamCount : function(){
@@ -383,11 +376,8 @@ var InitMethods = {
 	initCreateSheetButton : function(){
 		
 		return $('#createsheet').click(function(){
-
+			
 			Constants.contestants = new ModularMethods.outerList();
-
-			$('#hidden1').val($('#team1').find('option:selected').val());
-			$('#hidden2').val($('#team2').find('option:selected').val());
 
 			$('#scoretable').empty().append(TableMethods.createEventTable());
 			$('#ttl').click(function(){
@@ -402,12 +392,7 @@ var InitMethods = {
 			InitMethods.initControls();
 			InitMethods.initScoringLists();
 			InitMethods.initLockButtons();
-
-			if( checkIfScoresExist() == 0 ) {
-				return true;
-			} else {
-				return populateScores();
-			}
+			return true;
 		});
 	},
 	initControls : function(){
@@ -471,11 +456,7 @@ var InitMethods = {
 			var id = $(this).find('option:selected').val();
 			
 			if( id !== "" ){
-				try{
-					$(this).parent('td').css({'background-color':Constants.teamColors[id][0]});
-				}catch(err) {
-					$(this).parent('td').css({'background-color':'black'});
-				}
+				$(this).parent('td').css({'background-color':Constants.teamColors[id][0]});
 				//$(this).attr("disabled",true);
 				//alert('test...' + Constants.teamColors[id][0]);
 			}
@@ -495,105 +476,6 @@ var InitMethods = {
 		});
 	}
 };
-
-function populateScores() {
-
-	var t1 = $('#team1').find('option:selected').val();
-	var t2 = $('#team2').find('option:selected').val();
-
-	var day = $('#day').val();
-
-	$.ajax({
-		async		:	false,
-		dataType	:	'json',
-			type	:	'GET',
-			url		:	'../services/meetscore.php',
-			data	:	{'team1':t1, 'team2':t2, 'day':day},
-		success		:	function(json) {
-						
-						if(json.success == 1 && json.records.length >= 1) {
-							var meet = json.records[0];
-							var ID = json.recordId;
-
-							$('#hiddenID').val(ID);
-
-							for(var a = 0; a <= 10; a++) {
-								var val = 'event' + (a+1) + '_1st';
-								var ele = (a+1) + '-1st';
-
-								$('#' + ele).val(meet[val]);
-							}
-
-							for(var b = 11; b <= 72; b++) {
-								
-								var eventName = 'event' + (b+1) + '_';
-								var event1 = eventName + '1st';
-								var event2 = eventName + '2nd';
-								var event3 = eventName + '3rd';
-								var event4 = eventName + '4th';
-
-								var ele1 = (b+1) + '-1st';
-								var ele2 = (b+1) + '-2nd';
-								var ele3 = (b+1) + '-3rd';
-								var ele4 = (b+1) + '-4th';
-
-								$('#' + ele1).val(meet[event1]);
-								$('#' + ele2).val(meet[event2]);
-								$('#' + ele3).val(meet[event3]);
-								$('#' + ele4).val(meet[event4]);
-							}
-
-							for(var c = 73; c <= 82; c++) {
-								var val = 'event' + (c+1) + '_1st';
-								var ele = (c+1) + '-1st';
-
-								$('#' + ele).val(meet[val]);
-							}
-
-							var selectors = $('.scoringlist');
-							for(var x = 0; x < selectors.length; x++) {
-								
-								if (  $(selectors[x]).find('option:selected').val() !== 'undefined' ) {
-									$(selectors[x]).trigger('change');
-								}
-
-							}
-
-						}
-		}
-	});
-}
-
-function checkIfScoresExist() {
-	var t1 = $('#team1').find('option:selected').val();
-	var t2 = $('#team2').find('option:selected').val();
-	var t3 = $('#team3').find('option:selected').val();
-	var day = $('#day').val();
-	var answer = 0;
-	if(day == '' || day === 'undefined') {
-		alert('Please enter a day');
-	} else {
-		$.ajax({
-
-			dataType	:	'json',
-			type		:	'GET',
-			url			:	'../services/checkscore.php',
-			data		:	{'team1':t1, 'team2':t2, 'day':day},
-			success		:	function(json) {
-					if(json.success == 1 && json.answer == 1) {
-						answer = 1;
-						populateScores();
-
-					}
-			},
-			complete	:	function() {
-					if(answer == 1) {
-						$('#ttl').trigger('click');		
-					}
-			}
-		});
-	}
-}
 
 var TableMethods = {
 	
@@ -639,9 +521,8 @@ var TableMethods = {
 		tbl += TableMethods.lateRelayEventTable();
 		
 		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '" align="center"><input type="button" id="ttl" value="Calculate"/></td></tr>';
-		//tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '" align="center"><input type="button" value="Unlock" id="unlock"/></td></tr>';
-		//tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '" align="center"><input type="button" value="Relock" id="relock"/></td></tr>';
-		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '" align="center" class="summary-row"><div id="ttlscore"></div></td></tr>';
+		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '" align="center"><input type="button" value="Unlock" id="unlock"/><input type="button" value="Relock" id="relock"/></td></tr>';
+		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + '"><div id="ttlscore"></div></td></tr>';
 		tbl += '</tbody></table>';
 		
 		return tbl;
@@ -667,8 +548,8 @@ var TableMethods = {
 			tbl += '</tr>';
 		}
 		
-		tbl += '<tr class="summary-row"><td colspan="' + (Constants.individualPlaces+1) + 
-				'" align="left" id="early-shrinkage">Medley Relay Totals:  ' +
+		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + 
+				'" align="right" id="early-shrinkage">Early Relay Totals:  ' +
 				'<div id="earlyrelayscore" style="display:inline;">0' 
 				+ '</div></td></tr>';
 
@@ -692,7 +573,7 @@ var TableMethods = {
 			tbl += '</tr>';
 		}
 		
-		tbl += '<tr class="summary-row"><td colspan="' + (Constants.individualPlaces+1) + 
+		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + 
 				'" align="right" id="individual-shrinkage">Individual Event Totals:  '
 				+ '<div id="individualscore" style="display:inline;">0' 
 				+ '</div></td></tr>';
@@ -719,8 +600,8 @@ var TableMethods = {
 			tbl += '</tr>';
 		}
 		
-		tbl += '<tr class="summary-row"><td colspan="' + (Constants.individualPlaces+1) + 
-				'" align="left" id="late-shrinkage">Freestyle Relay Totals:  ' + 
+		tbl += '<tr><td colspan="' + (Constants.individualPlaces+1) + 
+				'" align="right" id="late-shrinkage">Late Relay Totals:  ' + 
 				'<div id="laterelayscore" style="display:inline;">0' 
 				+ '</div></td></tr>';
 

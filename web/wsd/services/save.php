@@ -23,10 +23,7 @@
 
 		print_r($queryCreateRecord);
 
-		print_r('$recId = ' . $recId);
-
-		print_r('end test');
-		if ( !isset($_POST['hiddenID']) ) {
+		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
 
 			$idRes = $pdo->query($queryCreateRecord);
 

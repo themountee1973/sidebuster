@@ -21,7 +21,7 @@
 	
 		$query = 'SELECT * FROM getMeetsByConference(\'' . $param . '\');';
 		
-	} else if ( isset($all) && isset($param) ) {
+	} else if ( !isset($all) && isset($param) ) {
 
 		$query = 'SELECT * FROM wholeConfEnchillada(\'' . $param . '\');';
 

@@ -20,13 +20,15 @@
 		$closeQuery = ') as ID;';
 
 		$queryCreateRecord = 'SELECT createNewMeetRecord(\'' . $day . '\',' . $team1 . ',' . $team2 . ') as ID;';
-			
+
+		print_r($queryCreateRecord);
+	
 		if ( !isset($recId) ) {
 
 			$idRes = $pdo->query($queryCreateRecord);
-
+			print_r($pdo);
 			while( $row = $idRes->fetch(PDO::FETCH_BOTH) ) {
-				$recId = $row['id'];
+				$recId = $row['ID'];
 			}
 			
 		}

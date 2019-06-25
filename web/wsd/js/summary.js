@@ -166,10 +166,15 @@ function initInitialConfs() {
 
 									}
 
-									oTable.fnClearTable(true);
-									oTable.fnAddData(confMeetData, true);
+									//oTable.fnClearTable(true);
+									//oTable.fnAddData(confMeetData, true);
 								},
-			complete		:	function(){ initConfsMeets(); initInitialTeams(); }
+			complete		:	function(){ 
+									$('#main').empty().append(makeTable(confMeetData));
+									initLinks();
+									initConfsMeets(); 
+									initInitialTeams(); 
+								}
 		});
 	});
 }

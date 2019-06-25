@@ -8,7 +8,7 @@
 		$day = $_POST['day'];
 		$team1 = $_POST['team1'];
 		$team2 = $_POST['team2'];
-		echo 'TEST:  ' . $recId . ' - ' . $day . ' - ' . $team1 . ' - ' . $team2 . '<br/>';
+
 		$max = 83;
 
 		$first = '-1st';
@@ -21,21 +21,14 @@
 
 		$queryCreateRecord = 'SELECT createNewMeetRecord(\'' . $day . '\',' . $team1 . ',' . $team2 . ') as ID;';
 
-		print_r($queryCreateRecord);
-
 		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
-
-			echo '<br/>' . 12345 . '<br/>';
 
 //			$idRes = $pdo->query($queryCreateRecord);
 			$idRes = pg_query($pdo, $queryCreateRecord);
 
-			echo '<br/>' . 67890 . '<br/>';
-
 			while( $row = pg_fetch_assoc($idRes) ) {
 				$recId = $row['id'];
 			}
-			echo 'Record ID:  ' . $recId . '<br/>';
 		}
 
 		$queryMedleyRelay = 'SELECT updateMedleyRelay(\'' . $recId . '\',';
@@ -122,14 +115,14 @@
 		}
 
 		
-		print_r($queryMedleyRelay); echo '<br/>';
-		print_r($queryIndividualMedley); echo '<br/>';
-		print_r($queryShortFreestyle); echo '<br/>';
-		print_r($queryBackstroke); echo '<br/>';
-		print_r($queryLongFreestyle); echo '<br/>';
-		print_r($queryBreaststroke); echo '<br/>';
-		print_r($queryButterfly); echo '<br/>';
-		print_r($queryFreestyleRelay); echo '<br/>';
+//		print_r($queryMedleyRelay); echo '<br/>';
+//		print_r($queryIndividualMedley); echo '<br/>';
+//		print_r($queryShortFreestyle); echo '<br/>';
+//		print_r($queryBackstroke); echo '<br/>';
+//		print_r($queryLongFreestyle); echo '<br/>';
+//		print_r($queryBreaststroke); echo '<br/>';
+//		print_r($queryButterfly); echo '<br/>';
+//		print_r($queryFreestyleRelay); echo '<br/>';
 
 		try {
 
@@ -163,5 +156,15 @@
 		}
 
 	}
+	$urlData = array(
+		'team1'	=>	$team1,
+		'team2'	=>	$team2,
+		'day'	=>	$day
+	);
+	$p = http_build_query($urlData);
 
+	$redUrl = '/wsd/score.html?' . $p;
+	
+	header('Location:' . $redUrl);
+	exit;
 ?>

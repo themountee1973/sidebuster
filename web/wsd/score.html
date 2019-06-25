@@ -12,6 +12,18 @@
 				$('#eventcontrol').hide();
 				$('#builder').empty().append(TableMethods.builderTable());
 				init();
+
+				var searchParams = new URLSearchParams(window.location.search);
+				if ( (searchParams.has('team1')) && (searchParams.has('team2')) && (searchParams.has('day')) ) {
+					var t1 = searchParams.get('team1');
+					var t2 = searchParams.get('team2');
+					var d = searchParams.get('day');
+					$('#meet-type').val('dualMeet').trigger('change');
+					$('#team1').val(t1);
+					$('#team2').val(t2);
+					$('#day').val(d);
+					$('#createsheet').trigger('click');
+				}
 			});
 			
 		</script>

@@ -507,8 +507,8 @@ function populateScores() {
 		async		:	false,
 		dataType	:	'json',
 			type	:	'GET',
-			url		:	'/wsd/services/meetscore.php',
-//			url		:	'services/meetscore.php',
+//			url		:	'/wsd/services/meetscore.php',
+			url		:	'services/meetscore.php',
 			data	:	{'team1':t1, 'team2':t2, 'day':day},
 		success		:	function(json) {
 						
@@ -578,8 +578,8 @@ function checkIfScoresExist() {
 
 			dataType	:	'json',
 			type		:	'GET',
-			url			:	'/wsd/services/checkscore.php',
-//			url			:	'services/checkscore.php',
+//			url			:	'/wsd/services/checkscore.php',
+			url			:	'services/checkscore.php',
 			data		:	{'team1':t1, 'team2':t2, 'day':day},
 			success		:	function(json) {
 					if(json.success == 1 && json.answer == 1) {

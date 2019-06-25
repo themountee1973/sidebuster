@@ -29,7 +29,7 @@
 		$response['records'] = $records;
 
 //		pg_close($pdo);
-		$pdo->close();
+//		$pdo->close();
 
 	} else {
 

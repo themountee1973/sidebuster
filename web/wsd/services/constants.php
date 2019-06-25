@@ -31,9 +31,11 @@
 
 	}
 
-	$resultSet = $pdo->query($query);
+//	$resultSet = $pdo->query($query);
+	$resultSet = pg_query($pdo, $query);
 	
-	while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
+//	while($row = $resultSet->fetch(PDO::FETCH_BOTH)) {
+	while($row = pg_fetch_assoc($resultSet) {
 		array_push($records, $row);
 	}
 

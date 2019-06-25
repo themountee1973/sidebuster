@@ -17,7 +17,7 @@
 
 		$query = 'SELECT * FROM getMeetsByTeam(\'' . $team . '\');';
 
-	} else if( isset($param) ) {
+	} else if( isset($all) && isset($param) ) {
 	
 		$query = 'SELECT * FROM getMeetsByConference(\'' . $param . '\');';
 		

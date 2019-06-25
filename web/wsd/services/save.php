@@ -21,7 +21,8 @@
 
 		$queryCreateRecord = 'SELECT createNewMeetRecord(\'' . $day . '\',' . $team1 . ',' . $team2 . ') as ID;';
 
-		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
+//		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
+		if ( !isset($recId) ) {
 
 //			$idRes = $pdo->query($queryCreateRecord);
 			$idRes = pg_query($pdo, $queryCreateRecord);

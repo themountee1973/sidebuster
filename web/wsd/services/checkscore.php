@@ -14,11 +14,11 @@
 		
 		$query = 'SELECT checkScoreExists(' . $team1 . ',' . $team2 . ',\'' . $day . '\') AS ANSWER;';
 
-//		$res = pg_query($pdo, $query);
-		$res = $pdo->query($query);
+		$res = pg_query($pdo, $query);
+//		$res = $pdo->query($query);
 
-//		$response['answer'] = pg_fetch_assoc($res)['answer'];
-		$response['answer'] = $res->fetch(PDO::FETCH_BOTH)['answer'];
+		$response['answer'] = pg_fetch_assoc($res)['answer'];
+//		$response['answer'] = $res->fetch(PDO::FETCH_BOTH)['answer'];
 
 		$response['success'] = 1;
 

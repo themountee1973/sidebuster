@@ -1,6 +1,6 @@
 <?php
 
-	include_once 'in.php';
+	include './in.php';
 
 	if(!is_null($_POST)) {
 
@@ -8,7 +8,7 @@
 		$day = $_POST['day'];
 		$team1 = $_POST['team1'];
 		$team2 = $_POST['team2'];
-
+		echo 'TEST:  ' . $recId . ' - ' . $day . ' - ' . $team1 . ' - ' . $team2 . '<br/>';
 		$max = 83;
 
 		$first = '-1st';
@@ -25,12 +25,17 @@
 
 		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
 
-			$idRes = $pdo->query($queryCreateRecord);
+			echo '<br/>' . 12345 . '<br/>';
 
-			while( $row = $idRes->fetch(PDO::FETCH_BOTH) ) {
-				$recId = $row['ID'];
+//			$idRes = $pdo->query($queryCreateRecord);
+			$idRes = pg_query($pdo, $queryCreateRecord);
+
+			echo '<br/>' . 67890 . '<br/>';
+
+			while( $row = pg_fetch_assoc($idRes) ) {
+				$recId = $row['id'];
 			}
-			
+			echo 'Record ID:  ' . $recId . '<br/>';
 		}
 
 		$queryMedleyRelay = 'SELECT updateMedleyRelay(\'' . $recId . '\',';
@@ -117,45 +122,46 @@
 		}
 
 		
-		//print_r($queryMedleyRelay); echo '<br/>';
-		//print_r($queryIndividualMedley); echo '<br/>';
-		//print_r($queryShortFreestyle); echo '<br/>';
-		//print_r($queryBackstroke); echo '<br/>';
-		//print_r($queryLongFreestyle); echo '<br/>';
-		//print_r($queryBreaststroke); echo '<br/>';
-		//print_r($queryButterfly); echo '<br/>';
-		//print_r($queryFreestyleRelay); echo '<br/>';
+		print_r($queryMedleyRelay); echo '<br/>';
+		print_r($queryIndividualMedley); echo '<br/>';
+		print_r($queryShortFreestyle); echo '<br/>';
+		print_r($queryBackstroke); echo '<br/>';
+		print_r($queryLongFreestyle); echo '<br/>';
+		print_r($queryBreaststroke); echo '<br/>';
+		print_r($queryButterfly); echo '<br/>';
+		print_r($queryFreestyleRelay); echo '<br/>';
 
 		try {
 
-			$mrRes = $pdo->query($queryMedleyRelay);
-			$mrId = ($mrRes->fetch(PDO::BOTH))['id'];
+			$mrRes = pg_query($pdo, $queryMedleyRelay);
+			$mrId = pg_fetch_assoc($mrRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $mrId . '<br/>';
-			$imRes = $pdo->query($queryIndividualMedley);
-			$imId = ($imRes->fetch(PDO::BOTH))['id'];
+			$imRes = pg_query($pdo, $queryIndividualMedley);
+			$imId = pg_fetch_assoc($imRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $imId . '<br/>';
-			$sfRes = $pdo->query($queryShortFreestyle);
-			$sfId = ($sfRes->fetch(PDO::BOTH))['id'];
+			$sfRes = pg_query($pdo, $queryShortFreestyle);
+			$sfId = pg_fetch_assoc($sfRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $sfId . '<br/>';
-			$bkRes = $pdo->query($queryBackstroke);
-			$bkId = ($bkRes->fetch(PDO::BOTH))['id'];
+			$bkRes = pg_query($pdo, $queryBackstroke);
+			$bkId = pg_fetch_assoc($bkRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $bkId . '<br/>';
-			$lfRes = $pdo->query($queryLongFreestyle);
-			$lfId = ($lfRes->fetch(PDO::BOTH))['id'];
-			$brRes =$pdo->query($queryBreaststroke);
-			$brId = ($brRes->fetch(PDO::BOTH))['id'];
+			$lfRes = pg_query($pdo, $queryLongFreestyle);
+			$lfId = pg_fetch_assoc($lfRes)['id'];
+
+			$brRes =pg_query($pdo, $queryBreaststroke);
+			$brId = pg_fetch_assoc($brRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $brId . '<br/>';
-			$bfRes = $pdo->query($queryButterfly);
-			$bfId = ($bfRes->fetch(PDO::BOTH))['id'];
+			$bfRes = pg_query($pdo, $queryButterfly);
+			$bfId = pg_fetch_assoc($bfRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $bfId . '<br/>';
-			$frRes = $pdo->query($queryFreestyleRelay);
-			$frId = ($frRes->fetch(PDO::BOTH))['id'];
+			$frRes = pg_query($pdo, $queryFreestyleRelay);
+			$frId = pg_fetch_assoc($frRes)['id'];
 				//echo 'EXECUTE RESULT:  ' . $frId . '<br/>';
 
 		} catch (Exception $exeption) {
-
+				print_r($exception);
 		}
 
-
 	}
+
 ?>

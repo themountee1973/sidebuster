@@ -2,6 +2,18 @@
 function init(){
 	InitMethods.initTeamCount();
 	InitMethods.initTypeList();
+	initStartdate();
+}
+
+function initStartdate() {
+	$('#startdate').keyup(function(){
+		$('#day').val($(this).val());
+	});
+				
+	$('#save').button({
+		label 		:	'SAVE'
+	}).hide();
+	$('.qty').hide();
 }
 
 var Scoring = {
@@ -360,6 +372,7 @@ var InitMethods = {
 			} else if(selectedType == 'dualMeet') {
 				$('#teamCount').val(2).trigger('keyup');
 			} else {
+				$('.qty').show();
 				$('#teamCount').val(0).trigger('keyup');
 			}
 		});
@@ -395,6 +408,7 @@ var InitMethods = {
 				Scoring.individualEventScoringMethod();
 				Scoring.lateRelayScoring();
 				Scoring.totalScoring();
+				$('.summary-row').show();
 			});
 			Scoring.initScoring();
 			$('#builder, #teamselect').hide();
@@ -402,12 +416,18 @@ var InitMethods = {
 			InitMethods.initControls();
 			InitMethods.initScoringLists();
 			InitMethods.initLockButtons();
+			
+			$('.summary-row').hide();
+			
+			$('#save').button({disabled:false}).show();
+			InitMethods.initScoreRows();
 
 			if( checkIfScoresExist() == 0 ) {
 				return true;
 			} else {
 				return populateScores();
 			}
+			
 		});
 	},
 	initControls : function(){
@@ -473,11 +493,18 @@ var InitMethods = {
 			if( id !== "" ){
 				try{
 					$(this).parent('td').css({'background-color':Constants.teamColors[id][0]});
+					$(this).closest('tr').next('tr').show();
+					var next = $(this).closest('tr').next('tr');
+					if ($(next).hasClass('scorerow') ) {
+						$(next).show();
+					}else{
+						next = $(next).next('tr');
+						$(next).show();
+					}
+					
 				}catch(err) {
 					$(this).parent('td').css({'background-color':'black'});
 				}
-				//$(this).attr("disabled",true);
-				//alert('test...' + Constants.teamColors[id][0]);
 			}
 			
 		});
@@ -493,6 +520,10 @@ var InitMethods = {
 			return $('select[class="scoringlist"] option:selected[value!=""]').parent('select').attr("disabled",true);
 			
 		});
+	},
+	initScoreRows	:	function() {
+		$('.scorerow').hide();
+		return $('.scorerow').first().show();
 	}
 };
 
@@ -600,7 +631,7 @@ function checkIfScoresExist() {
 var TableMethods = {
 	
 	typeList : function(){
-		var list = '<select name="meet-type" id="meet-type">';
+		var list = '<select name="meet-type" id="meet-type" style="height:23px !important;">';
 		list += '<option value="">- Select meet type -</option>';
 		list += '<option value="' + Constants.tt + '">Time Trials</option>';
 		list += '<option value="' + Constants.dm + '">Dual Meet</option>';
@@ -617,10 +648,11 @@ var TableMethods = {
 		
 		var tbl = '<table style="display:inline;"><thead>';
 		
-		tbl += '<tr><th>Type</th><th>Qty</th></tr>';
+		tbl += '<tr><th>Date</th><th>Type</th><th><div class="qty"># Of Teams</div></th></tr>';
 		tbl += '</thead><tbody>';
-		tbl += '<tr><td>' + TableMethods.typeList() + '</td><td>' 
-				+ TableMethods.teamCount() + '</td></tr>';
+		tbl += '<tr><td><input type="text" id="startdate" name="startdate" style="text-align: center;" placeholder="MM/DD/YYYY"/></td>';
+		tbl += '<td>' + TableMethods.typeList() + '</td><td><div class="qty">' 
+				+ TableMethods.teamCount() + '</div></td></tr>';
 		tbl += '</tbody></table>';
 		
 		return tbl;
@@ -654,7 +686,7 @@ var TableMethods = {
 		for(var x = 1; x <= 11; x++){
 			var eventName = 'Event - ' + x;
 			
-			tbl += '<tr class="earlyrow"><td>' + eventName + '</td>';
+			tbl += '<tr class="scorerow earlyrow"><td>' + eventName + '</td>';
 
 			for(var t = 0; t < Constants.individualPlaces; t++){
 				
@@ -682,7 +714,7 @@ var TableMethods = {
 		for(var x = 12; x <= 73; x++){
 			var eventName = 'Event - ' + x;
 			
-			tbl += '<tr class="' + ModularMethods.disciplineClass(x) + '"><td>' + eventName + '</td>';
+			tbl += '<tr class="scorerow ' + ModularMethods.disciplineClass(x) + '"><td>' + eventName + '</td>';
 
 			for(var t = 0; t < Constants.individualPlaces; t++){
 				
@@ -707,7 +739,7 @@ var TableMethods = {
 		for(var x = 74; x <= 83; x++){
 			var eventName = 'Event - ' + x;
 			
-			tbl += '<tr class="laterow"><td>' + eventName + '</td>';
+			tbl += '<tr class="scorerow laterow"><td>' + eventName + '</td>';
 
 			for(var t = 0; t < Constants.individualPlaces; t++){
 				

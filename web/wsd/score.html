@@ -4,6 +4,7 @@
 		<meta charset="utf8"/>
 		<link rel="stylesheet" href="css/ws.css"/>
 		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.11.custom.min.js"></script>
 		<script type="text/javascript" src="js/score.js"></script>
 		<script type="text/javascript">
 		
@@ -12,6 +13,11 @@
 				$('#eventcontrol').hide();
 				$('#builder').empty().append(TableMethods.builderTable());
 				init();
+				
+				$('#save').button({
+					label 		:	'SAVE',
+					disabled	:	true
+				});
 
 				var searchParams = new URLSearchParams(window.location.search);
 				if ( (searchParams.has('team1')) && (searchParams.has('team2')) && (searchParams.has('day')) ) {
@@ -46,8 +52,8 @@
 		<div id="teamselect" style="display:inline;"></div>
 		<form id="score" name="score" method="POST" action="services/save.php">
 			<div id="scoretable"></div>
-			<div id="date" class="bottom"><input type="text" name="day" id="day" placeholder="mm/dd/yyyy"/></div>
-			<div id="submitDiv" class="bottom"><input type="submit" value="save"/>
+			<div id="date" class="bottom" style="display:none;"><input type="text" name="day" id="day" placeholder="mm/dd/yyyy"/></div>
+			<div id="submitDiv" class="bottom"><input type="submit" id="save" value="save"/>
 			<div id="teams-hidden" style="display:none;"><input type="text" id="hiddenID" name="hiddenID" value=""/><input type="text" id="hidden1" name="team1" value=""/><input type="text" id="hidden2" name="team2" value=""/></div>
 		</form>
 	</body>

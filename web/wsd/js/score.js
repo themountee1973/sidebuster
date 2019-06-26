@@ -522,8 +522,8 @@ var InitMethods = {
 		});
 	},
 	initScoreRows	:	function() {
-		$('.scorerow').hide();
-		return $('.scorerow').first().show();
+		//$('.scorerow').hide();
+		//return $('.scorerow').first().show();
 	}
 };
 

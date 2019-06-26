@@ -13,11 +13,6 @@
 				$('#eventcontrol').hide();
 				$('#builder').empty().append(TableMethods.builderTable());
 				init();
-				
-				$('#save').button({
-					label 		:	'SAVE',
-					disabled	:	true
-				});
 
 				var searchParams = new URLSearchParams(window.location.search);
 				if ( (searchParams.has('team1')) && (searchParams.has('team2')) && (searchParams.has('day')) ) {

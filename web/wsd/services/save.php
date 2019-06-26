@@ -161,15 +161,15 @@
 		}
 
 	}
-//	$urlData = array(
-//		'team1'	=>	$team1,
-//		'team2'	=>	$team2,
-//		'day'	=>	$day
-//	);
-//	$p = http_build_query($urlData);
+	$urlData = array(
+		'team1'	=>	$team1,
+		'team2'	=>	$team2,
+		'day'	=>	$day
+	);
+	$p = http_build_query($urlData);
 
-//	$redUrl = '/wsd/score.html?' . $p;
-	
-//	header('Location:' . $redUrl);
-//	exit;
+	$redUrl = '/wsd/score.html?' . $p;
+
+	header('Location:' . $redUrl);
+	exit;
 ?>

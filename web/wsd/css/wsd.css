@@ -40,6 +40,7 @@
 }
 
 #meets_wrapper, #scores_wrapper {
-	width:70% !important;
+	width:90% !important;
+	margin: auto 5% !important;
 }
 

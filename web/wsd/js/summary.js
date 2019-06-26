@@ -19,7 +19,8 @@ function makeTable(rows) {
 	table += '<tr class="ui-state-default">';
 	table += '<th colspan="2"></th>';
 	table += '<th colspan="2">Overall</th>';
-	table += '<th colspan="8">Conference Points</th>';
+	table += '<th colspan="2">Conf.</th>';
+	table += '<th colspan="6">Conference Points</th>';
 	table += '<th colspan="6">Overall Points</th>';
 	table += '</tr>';
 	table += '<tr>';
@@ -141,7 +142,7 @@ function initMeetResults() {
 		iDisplayLength	:	-1,
 		sPaginationType	:	'full_numbers',
 		aoColumns		:	[{'bVisible':false,'bSortable':false},null,null,{'sClass':'center-min'},null,null,{'sClass':'center-med'}],
-		aoSorting		:	[[7, 'asc']]
+		aoSorting		:	[[6, 'asc']]
 	}).css({'width':'100%'});
 	//initConfs();
 }

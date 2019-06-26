@@ -142,7 +142,7 @@ function initMeetResults() {
 		iDisplayLength	:	-1,
 		sPaginationType	:	'full_numbers',
 		aoColumns		:	[{'bVisible':false,'bSortable':false},null,null,{'sClass':'center-min'},null,null,{'sClass':'center-med'}],
-		aoSorting		:	[[6, 'asc']]
+		aoSorting		:	[]
 	}).css({'width':'100%'});
 	//initConfs();
 }

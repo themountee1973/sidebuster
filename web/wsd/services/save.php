@@ -20,6 +20,8 @@
 		$closeQuery = ') as ID;';
 
 		$queryCreateRecord = 'SELECT createNewMeetRecord(\'' . $day . '\',' . $team1 . ',' . $team2 . ') as ID;';
+		
+		print_r($queryCreateRecord);
 
 //		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
 		if ( !isset($recId) ) {
@@ -116,14 +118,14 @@
 		}
 
 		
-//		print_r($queryMedleyRelay); echo '<br/>';
-//		print_r($queryIndividualMedley); echo '<br/>';
-//		print_r($queryShortFreestyle); echo '<br/>';
-//		print_r($queryBackstroke); echo '<br/>';
-//		print_r($queryLongFreestyle); echo '<br/>';
-//		print_r($queryBreaststroke); echo '<br/>';
-//		print_r($queryButterfly); echo '<br/>';
-//		print_r($queryFreestyleRelay); echo '<br/>';
+		print_r($queryMedleyRelay); echo '<br/>';
+		print_r($queryIndividualMedley); echo '<br/>';
+		print_r($queryShortFreestyle); echo '<br/>';
+		print_r($queryBackstroke); echo '<br/>';
+		print_r($queryLongFreestyle); echo '<br/>';
+		print_r($queryBreaststroke); echo '<br/>';
+		print_r($queryButterfly); echo '<br/>';
+		print_r($queryFreestyleRelay); echo '<br/>';
 
 		try {
 

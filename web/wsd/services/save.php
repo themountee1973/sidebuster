@@ -24,10 +24,12 @@
 		print_r($queryCreateRecord);
 
 //		if ( is_null($recId) || $recId == 0 || $recId == '' ) {
-		if ( !isset($recId) ) {
+		if ( ($recId == '0') ||  !(isset($recId)) ) {
 
 //			$idRes = $pdo->query($queryCreateRecord);
 			$idRes = pg_query($pdo, $queryCreateRecord);
+
+			print_r("EXECUTING PROCEDURE TO INSERT NEW MEET RECORD!");
 
 			while( $row = pg_fetch_assoc($idRes) ) {
 				$recId = $row['id'];
